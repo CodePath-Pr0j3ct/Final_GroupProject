@@ -1,7 +1,7 @@
-Unit 8: Group Milestone - README Example
+Unit 8: Group Milestone - README
 ===
 
-# TUNIN
+# FitYet
 
 ## Table of Contents
 1. [Overview](#Overview)
