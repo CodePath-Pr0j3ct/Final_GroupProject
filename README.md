@@ -14,69 +14,61 @@ Paces the user in reaching a specific fitness goal using regularly scheduled ala
 
 
 ### App Evaluation
-- **Category:** Fitness 
-- **Mobile:** This app would be primarily developed for mobile but would perhaps be just as viable on a computer, such as tinder or other similar apps. Functionality wouldn't be limited to mobile devices, however mobile version could potentially have more features.
-- **Story:** Analyzes users music choices, and connects them to other users with similar choices. The user can then decide to message this person and befriend them if wanted.
-- **Market:** Any individual could choose to use this app, and to keep it a safe environment, people would be organized into age groups.
-- **Habit:** This app could be used as often or unoften as the user wanted depending on how deep their social life is, and what exactly they're looking for.
-- **Scope:** First we would start with pairing people based on music taste, then perhaps this could evolve into a music sharing application as well to broaden its usage. Large potential for use with spotify, apple music, or other music streaming applications.
+- **Category:** Fitness / Wellness
+- **Mobile:** This app would be primarily developed for mobile Android devices.
+- **Story:** With an area of improvement indicated on the user’s profile, the app sets regular reminders for the user to complete a set of exercises.
+- **Market:** Any individual may use this app, particularly those with high interests in health/fitness.
+- **Habit:** This app operates in accordance with the user’s schedule; the user manually inputs their exercise times and those times will trigger an exercise reminder.
+- **Scope:** First, the user may track their own progress by completing the sets of exercises. In the future, an interactive feature with other in-app users may come to fruition to promote healthy competition and encouragement.
 
 ## Product Spec
 ### 1. User Stories (Required and Optional)
 
 **Required Must-have Stories**
 
-* User logs in to access previous chats and preference settings
-* User picks what their favorite artist/genre/etc. (Think Spotify interface)
-* Matches have a chat window to get to know each other, with the ability to skip music and unmatch (Tinder Style).
-* Profile pages for each user
-* Settings (Accesibility, Notification, General, etc.)
+*User creates a profile to access the appropriate exercises
+*User can set fitness goals to achieve
+*After setting goals, user can set a schedule to workout
+*Alarm (or Funky music of users choice from their phone) will beep on the scheduled time as a reminder of the exercise.
+*Alarm- proceed/ dismiss
+*Exercise list and tutorial appears
+*App provides guidance for inexperienced user (youtube tutorials for exercises)
+*User can browse other exercise tutorials based on their need (One page with different sections/list of exercise)
+*Setting (Change goal, schedule, type of exercise)
+*Progress showing how far/close you are from achieving your goals.
 
 **Optional Nice-to-have Stories**
 
-* Social app etc
-* Reward system
-* Optional Shuffle Button (i.e. random encounter/random song)
-* Listening/Encounter Queue
-
+* Social interaction with other users
+* Reward system with points 
+* Leaderboard showing top performers amongst your friends
 ### 2. Screen Archetypes
 
-* Login 
-* Register - User signs up or logs into their account
-   * Upon Download/Reopening of the application, the user is prompted to log in to gain access to their profile information to be properly matched with another person. 
-   * ...
-* Messaging Screen - Chat for users to communicate (direct 1-on-1)
-   * Upon selecting music choice users matched and message screen opens
-* Profile Screen 
-   * Allows user to upload a photo and fill in information that is interesting to them and others
-* Song Selection Screen.
-   * Allows user to be able to choose their desired song, artist, genre of preference and begin listening and interacting with others.
-* Settings Screen
-   * Lets people change language, and app notification settings.
-
+* Login screen (AHMED)
+* Register screen - User signs up/logs into their account (FARIHA)
+* Goal creation screen - User states the goal they hope to achieve (LILY)
+* User profile screen - User views their progress and goal (FARIHA)
+* Schedule set-up screen - User arranges their own workout schedule (AHMED)
+* Schedule view screen - User can view their own schedule (AHMED)
+* Youtube guides screen- User can view YouTube tutorials for certain exercises (FARIHA)
+* Alarm screen- User may either dismiss or commit to workout (LILY)
+* Workout screen- User sees visual image and timer while music plays (LILY)
+  
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* Music selection
-* Profile
-* Settings
+* Schedule/Timer
+* User Profile
+* YouTube guides
 
 Optional:
-* Music/Encounter Queue
-* Discover (Top Choices)
+* Friends-Leaderboard (view friends’ progress)
 
 **Flow Navigation** (Screen to Screen)
-* Forced Log-in -> Account creation if no log in is available
-* Music Selection (Or Queue if Optional) -> Jumps to Chat
+* Forced Log-in -> Account creation if no log-in is available
 * Profile -> Text field to be modified. 
 * Settings -> Toggle settings
 
 ## Wireframes
-<img src="https://i.imgur.com/9CrjH1K.jpg" width=800><br>
 
-### [BONUS] Digital Wireframes & Mockups
-<img src="https://i.imgur.com/lYHn37F.jpg" height=200>
-
-### [BONUS] Interactive Prototype
-<img src="https://i.imgur.com/AiKfE5g.gif" width=200>
