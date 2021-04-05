@@ -69,3 +69,5 @@ Optional:
 
 ## Wireframes
 
+<img src='wireframe_draft.png' title='Wireframe of FitYet' width='' alt='Wireframe of FitYet' />
+
