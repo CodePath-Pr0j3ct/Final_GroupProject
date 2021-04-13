@@ -146,7 +146,7 @@ Schedule
   * (Read/GET) Query logged-in user object
   * (Update/PUT) Update userPic
 
-**[OPTIONAL] Existing API Endpoints **
+**[OPTIONAL] Existing API Endpoints**
 
 YouTube API
 
