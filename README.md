@@ -39,35 +39,118 @@ Paces the user in reaching a specific fitness goal using regularly scheduled ala
 * Social interaction with other users
 * Reward system with points 
 * Leaderboard showing top performers amongst your friends
+
 ### 2. Screen Archetypes
 
 * Login screen (AHMED)
 * Register screen - User signs up/logs into their account (FARIHA)
 * Goal creation screen - User states the goal they hope to achieve (LILY)
+* Personalized goal screen - User can view goal and exercises (LILY)
 * User profile screen - User views their progress and goal (FARIHA)
+* Settings screen - User may update information
 * Schedule set-up screen - User arranges their own workout schedule (AHMED)
 * Schedule view screen - User can view their own schedule (AHMED)
 * Youtube guides screen- User can view YouTube tutorials for certain exercises (FARIHA)
-* Alarm screen- User may either dismiss or commit to workout (LILY)
+* Notification screen- User may either dismiss or commit to workout (LILY)
 * Workout screen- User sees visual image and timer while music plays (LILY)
+ADDITIONAL
+*Videos related to goals screen- User sees list of exercises and videos according to their goals (FARIHA)
+*More videos (unrelated to goals) screen - User can browse through more tutorials/videos unrelated to their goals (FARIHA)
+
   
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
 * Schedule/Timer
-* User Profile
+* Goals
+* Calendar
+* User Profile/Settings
 * YouTube guides
+
 
 Optional:
 * Friends-Leaderboard (view friends’ progress)
 
 **Flow Navigation** (Screen to Screen)
-* Forced Log-in -> Account creation if no log-in is available
-* Profile -> Text field to be modified. 
-* Settings -> Toggle settings
+* Register screen -> Login screen
+* User profile -> Settings screen
+* Goal creation screen -> Personalized goals screen
+* Schedule set-up screen -> Schedule view
+* Notification screen -> Workout screen
+
 
 ## Wireframes
 
 <img src='wireframe_draft.png' title='Wireframe of FitYet' width='' alt='Wireframe of FitYet' />
 
+## Schema
+
+### Models
+
+User
+
+| Property  | Type  | Description  |
+| ------------- | ------------- | ------------- |
+| userName  | String  | User name  |
+| password  | String  | User password  |
+| userPic  | File  | User profile picture  |
+| userEmail  | String  | User email address  |
+| userHeight  | int  | User height  |
+| userWeight  | int  | User weight  |
+| userGoal  | String  | User selected fitness goal  |
+| progressBar  | int  | Tracks user progress  |
+| schedule  | Date  | TBA  |
+
+Exercise
+
+| Property  | Type  | Description  |
+| ------------- | ------------- | ------------- |
+| daysOfWeek  | int  | Records selected days of week  |
+| time  | int/Date  | Records selected time of exercise  |
+| description  | String  | Describes to user the workout  |
+| exerciseNames  | String Array  | Names/lists of the workouts  |
+
+Schedule
+
+| Property  | Type  | Description  |
+| ------------- | ------------- | ------------- |
+| preferredDay  | String  | User sets a day/days to workout   |
+| preferredTime  | int  | User sets a time to workout   |
+| days  | String/int array  | Days (Monday-Sunday) to workout  |
+
+## Networking
+
+**List of network requests by screen**
+
+* Home/Schedule Screen
+  * (Create/POST) Create new Exercise object
+  * (Read/GET) Query Exercise object
+  * (Update/PUT) Update daysOfWeek/times/description
+  * (Delete) Delete existing daysOfWeek/times/description
+
+* Timer Screen
+  * (Read/GET) Query description
+  * (Read/GET) Query progressBar
+  * (Update/PUT) Update progressBar
+
+* Goals Screen
+  * (Read/GET) Query userGoal
+  * (Update/PUT) Update userGoal
+
+* Video Guides Screen
+  * (Read/GET) Query userGoal
+
+* User Profile Screen
+  * (Read/GET) Query logged-in user object
+  * (Update/PUT) Update userPic
+
+**[OPTIONAL] Existing API Endpoints **
+
+YouTube API
+
+* Base URL:  https://www.googleapis.com/youtube/v3
+
+| HTTP Verb  | Endpoint  | Description  |
+| ------------- | ------------- | ------------- |
+| list  | /videos  | Returns a list of videos that match api request parameters  |
