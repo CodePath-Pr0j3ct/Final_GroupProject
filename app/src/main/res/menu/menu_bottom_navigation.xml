@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_timer"
+        android:icon="@drawable/ic_baseline_timer_24"
+        android:title="Timer"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_goals"
+        android:icon="@drawable/ic_baseline_bar_chart_24"
+        android:title="Goals"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_videos"
+        android:icon="@drawable/ic_baseline_play_arrow_24"
+        android:title="Videos"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_calendar"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="Calendar"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Profile"
+        app:showAsAction="always" />
+</menu>
