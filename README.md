@@ -24,22 +24,22 @@ Paces the user in reaching a specific fitness goal using regularly scheduled ala
 
 **Required Must-have Stories**
 
-* User creates a profile to access the appropriate exercises
-* User can set fitness goals to achieve
-* After setting goals, user can set a schedule to workout
-* Alarm (or Funky music of users choice from their phone) will beep on the scheduled time as a reminder of the exercise.
-* Alarm- proceed/ dismiss
-* Exercise list and tutorial appears
-* App provides guidance for inexperienced user (youtube tutorials for exercises)
-* User can browse other exercise tutorials based on their need (One page with different sections/list of exercise)
-* Setting (Change goal, schedule, type of exercise)
-* Progress showing how far/close you are from achieving your goals.
+- [x] User creates a profile to access the appropriate exercises
+- [x] User can set fitness goals to achieve
+- [ ] After setting goals, user can set a schedule to workout
+- [ ] Alarm (or Funky music of users choice from their phone) will beep on the scheduled time as a reminder of the exercise.
+- [ ] Alarm- proceed/ dismiss
+- [ ] Exercise list and tutorial appears
+- [ ] App provides guidance for inexperienced user (youtube tutorials for exercises)
+- [ ] User can browse other exercise tutorials based on their need (One page with different sections/list of exercise)
+- [ ] Setting (Change goal, schedule, type of exercise)
+- [ ] Progress showing how far/close you are from achieving your goals.
 
 **Optional Nice-to-have Stories**
 
-* Social interaction with other users
-* Reward system with points 
-* Leaderboard showing top performers amongst your friends
+- [ ] Social interaction with other users
+- [ ] Reward system with points 
+- [ ] Leaderboard showing top performers amongst your friends
 
 ### 2. Screen Archetypes
 
