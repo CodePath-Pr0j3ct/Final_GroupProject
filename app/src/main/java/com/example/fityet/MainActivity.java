@@ -2,14 +2,16 @@ package com.example.fityet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.fityet.fragments.ProfileFragment;
+import com.example.fityet.fragments.VideoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
-import com.example.fityet.fragments.ProfileFragment;
-
+import com.example.fityet.fragments.TimerFragment;
+import com.example.fityet.fragments.GoalsFragment;
+import com.example.fityet.fragments.CalendarFragment;
 import android.os.Bundle;
-import com.parse.ParseQuery;
 import android.view.MenuItem;
-import android.widget.Toast;
 import androidx.fragment.app.FragmentManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,25 +34,20 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.action_timer:
                         //TODO: Update fragment
-                        Toast.makeText(MainActivity.this, "Timer time!", Toast.LENGTH_SHORT).show();
-                        //fragment = new TimerFragment();
+                        fragment = new TimerFragment();
                         break;
                     case R.id.action_goals:
-                        Toast.makeText(MainActivity.this, "Goals time!", Toast.LENGTH_SHORT).show();
-                        //fragment = new GoalsFragment();
+                        fragment = new GoalsFragment();
                         break;
                     case R.id.action_videos:
-                        Toast.makeText(MainActivity.this, "Video time!", Toast.LENGTH_SHORT).show();
-                        //fragment = new VideoFragment();
+                        fragment = new VideoFragment();
                         break;
                     case R.id.action_calendar:
-                        Toast.makeText(MainActivity.this, "Calendar time!", Toast.LENGTH_SHORT).show();
-                        //fragment = new CalendarFragment();
+                        fragment = new CalendarFragment();
                         break;
                     case R.id.action_profile:
                     default:
                         //TODO: Update fragment
-                        Toast.makeText(MainActivity.this, "Profile time!", Toast.LENGTH_SHORT).show();
                         fragment = new ProfileFragment();
                         break;
                 }

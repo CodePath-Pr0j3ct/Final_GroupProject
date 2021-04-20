@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     android:layout_margin="12dp"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
 
     <EditText
         android:id="@+id/etUsername"
@@ -26,12 +27,20 @@
         android:hint="@string/password"
         android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/btnLogin"
+    <EditText
+        android:id="@+id/etEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/log_in" />
+        android:ems="10"
+        android:hint="@string/email" />
+
+    <Spinner
+        android:id="@+id/goalsSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/spinner_goals"
+        />
 
     <Button
         android:id="@+id/btnRegister"
@@ -39,6 +48,5 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/register" />
-
 
 </LinearLayout>
