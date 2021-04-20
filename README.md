@@ -85,6 +85,9 @@ Optional:
 
 <img src='wireframe_draft.png' title='Wireframe of FitYet' width='' alt='Wireframe of FitYet' />
 
+### App Walkthough GIF
+<img src='FitYetWalkthrough.gif' title='FitYet Video Walkthrough' width='' alt='FitYet Video Walkthrough' />
+
 ## Schema
 
 ### Models
