@@ -3,12 +3,16 @@ package com.example.fityet;
 import android.app.Application;
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.example.fityet.Models.User;
 
 public class ParseApplication extends Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Register your parse models
+        ParseObject.registerSubclass(User.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("Uf1nprKg4VOcmHLHlTWyBi149sGS58xhZA5I4obb")

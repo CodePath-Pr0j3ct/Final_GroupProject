@@ -7,6 +7,11 @@
     <string name="register">Register</string>
     <string name="email">Email address</string>
     <string name="log_out">Log out</string>
+    <string name="your_goal">Your goal</string>
+    <string name="your_weight">Your weight</string>
+    <string name="your_height">Your height</string>
+    <string name="your_email">Email address</string>
+
     <string-array name="spinner_goals">
         <item>Lose fat</item>
         <item>Gain flexibility</item>
