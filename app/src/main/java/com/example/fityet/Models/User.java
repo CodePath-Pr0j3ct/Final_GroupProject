@@ -8,7 +8,9 @@ import com.parse.ParseUser;
 @ParseClassName("User")
 public class User extends ParseObject{
 
-    public static final String KEY_AVATAR = "Avatar";
+
+    public  final String KEY_AVATAR = "Avatar";
+   // public static final String KEY_AVATAR = "profilepic";
     public static final String KEY_GOAL = "goal";
     public static final String KEY_USER = "user";
     public static final String KEY_PROGRESS = "";
