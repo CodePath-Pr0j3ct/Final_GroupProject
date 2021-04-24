@@ -64,6 +64,9 @@ public class VideoFragment extends Fragment {
         // 4. set the layout manager on the recycler view
         rvVideos.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
         }
+
+
 
     }

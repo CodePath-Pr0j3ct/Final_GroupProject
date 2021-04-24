@@ -1,6 +1,7 @@
 package com.example.fityet.Models;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,7 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.fityet.Adapters.VideoAdapter;
 import com.example.fityet.R;
 import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 import java.util.Vector;
@@ -19,28 +24,42 @@ public class DetailActivity extends YouTubeBaseActivity {
     RecyclerView recyclerView;
     TextView tvTitle;
     YouTubePlayerView youTubePlayerView;
-    Vector<Video> youtubeVideos = new Vector<Video>();
+
 
     protected void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_detail);
+        Video video = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
         tvTitle = findViewById(R.id.tvTitle);
-        youTubePlayerView = findViewById(R.id.player);
-
-        //Add videos in youtube video list/vector
-        youtubeVideos.add(new Video("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/N3aSoC0HHdU\" frameborder=\"0\" allowfullscreen></iframe>") );
-
+        tvTitle.setText(video.getTitle());
         recyclerView = (RecyclerView) findViewById(R.id.rvVideos);
-
-        VideoAdapter videoAdapter = new VideoAdapter(youtubeVideos);
+        youTubePlayerView = findViewById(R.id.player);
+        VideoAdapter videoAdapter = new VideoAdapter(Video.videoList());
 
         recyclerView.setAdapter(videoAdapter);
+
     }
 
+ /*   private void initializeYoutube(final String youtubeKey) {
+        Video video = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
+        youTubePlayerView.initialize(YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                Log.d("DetailActivity", "onInitializationSuccess");
+
+                    //the video starts playing
+                    youTubePlayer.loadVideo(youtubeKey);
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+                Log.d("DetailActivity", "onInitializationFailure");
+
+            }
+        });
+    } */
 
 
 }
