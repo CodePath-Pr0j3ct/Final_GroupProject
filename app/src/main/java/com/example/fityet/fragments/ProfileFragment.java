@@ -89,7 +89,7 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
 
@@ -109,59 +109,64 @@ public class ProfileFragment extends Fragment {
 
         userPic = view.findViewById(R.id.userImage);
 
-        tvUsername.setText(ParseUser.getCurrentUser().getUsername());
+       /* tvUsername.setText(ParseUser.getCurrentUser().getUsername());
         userGoal.setText(User.getKeyGoal());
         userWeight.setText(User.getWeight());
         userHeight.setText(User.getHeight());
         userEmail.setText(ParseUser.getCurrentUser().getEmail());
-        ParseFile image = User.getAvatar();
+        ParseFile image = User.getAvatar(); */
 
-        if (image != null) {
+
+        userGoal.setText(User.KEY_GOAL);
+        userWeight.setText(User.KEY_WEIGHT);
+        userHeight.setText(User.KEY_HEIGHT);
+        userEmail.setText(ParseUser.getCurrentUser().getEmail());
+        // ParseFile image = User.KEY_AVATAR;
+
+/*        if (image != null) {
 
             Glide.with(getActivity().getApplicationContext()).load(image).transform(new CircleCrop()).into(userPic);
 
+        } */
+
+            btnLogOut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    ParseUser.logOut();
+
+                    Intent i = new Intent(getContext(), LoginActivity.class);
+                    startActivity(i);
+
+                }
+            });
+
         }
 
-        btnLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        protected void queryUser () {
+            ParseQuery<ParseUser> query = ParseUser.getQuery();
 
-                ParseUser.logOut();
+            query.whereEqualTo("user", ParseUser.getCurrentUser());
 
-                Intent i = new Intent(getContext(), LoginActivity.class);
-                startActivity(i);
+            query.findInBackground(new FindCallback<ParseUser>() {
 
-            }
-        });
+                public void done(List<ParseUser> objects, ParseException e) {
 
-    }
+                    if (e == null) {
+                        // The query was successful.
+                        Toast.makeText(getActivity(), "User info success", Toast.LENGTH_SHORT).show();
 
-    protected void queryUser() {
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
+                    } else {
+                        // Something went wrong.
+                        Toast.makeText(getActivity(), "User info failure", Toast.LENGTH_SHORT).show();
+                        return;
 
-        query.whereEqualTo("user", ParseUser.getCurrentUser());
-
-        query.findInBackground(new FindCallback<ParseUser>() {
-
-            public void done(List<ParseUser> objects, ParseException e) {
-
-                if (e == null) {
-                    // The query was successful.
-                    Toast.makeText(getActivity(),"User info success",Toast.LENGTH_SHORT).show();
+                    }
 
                 }
 
-                else {
-                    // Something went wrong.
-                    Toast.makeText(getActivity(),"User info failure",Toast.LENGTH_SHORT).show();
-                    return;
+            });
 
-                }
-
-            }
-
-        });
+        }
 
     }
-
-}
