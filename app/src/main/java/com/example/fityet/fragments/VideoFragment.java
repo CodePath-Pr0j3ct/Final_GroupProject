@@ -28,10 +28,13 @@ import java.util.Vector;
  */
 public class VideoFragment extends Fragment {
 
-    List<Exercise> exercises;
+    List<Exercise> exercises1; //Goal-specific exercises
+    List<Exercise> exercises2; //Other exercises
     YouTubePlayerView youTubePlayerView;
-    RecyclerView rvExercises;
+    RecyclerView rvExercises1; //For You recyclerView
+    RecyclerView rvExercises2; //More recyclerView
     VideoAdapter videoAdapter;
+    TextView userGoalName;
 
 
     public VideoFragment() {
@@ -47,37 +50,45 @@ public class VideoFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        exercises = new ArrayList<>();
-        fillExercises();
+        exercises1 = new ArrayList<>();
+        rvExercises1 = view.findViewById(R.id.rvExercises1);
+        exercises2 = new ArrayList<>();
+        rvExercises2 = view.findViewById(R.id.rvExercises2);
+        userGoalName = view.findViewById(R.id.tvCustomGoal);
         super.onCreate(savedInstanceState);
-        rvExercises = view.findViewById(R.id.rvExercises);
+        fillExercises();
+
+        //FARIHA, IF YOU MADE PROFILE FRAGMENT'S GETTERS/SETTERS RUN PROPERLY, FIX THIS CODE TOO
+        //userGoalName.setText(User.KEY_GOAL);
 
 
-        // Create an adapter
-        VideoAdapter videoAdapter = new VideoAdapter(getContext(), exercises);
+        // Create adapters for both lists
+        VideoAdapter videoAdapter = new VideoAdapter(getContext(), exercises1);
+        //VideoAdapter videoAdapter = new VideoAdapter(getContext(), exercises2);
 
-        // Set adapter to the recycler view
-        rvExercises.setAdapter(videoAdapter);
+        // Set adapters to each recycler view
+        rvExercises1.setAdapter(videoAdapter);
+        //rvExercises2.setAdapter(videoAdapter);
 
         // Set a layout manager, required for RecyclerView to know how to layout different views
         // on the screen
-        rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        rvExercises1.setLayoutManager(new LinearLayoutManager(getContext()));
+        //rvExercises2.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
     }
 
     private void fillExercises() {
-        exercises.add(new Exercise("Sit-ups", "jDwoBqPH0jk"));
-        exercises.add(new Exercise("Pushups", "IODxDxX7oi4"));
-        exercises.add(new Exercise("Planks", "ASdvN_XEl_c"));
-        exercises.add(new Exercise("Pike Pushups", "sposDXWEB0A"));
-        exercises.add(new Exercise("Dips", "2z8JmcrW-As"));
-        exercises.add(new Exercise("Burpees", "dZgVxmf6jkA"));
-        exercises.add(new Exercise("Jumping Jacks", "UpH7rm0cYbM"));
-        exercises.add(new Exercise("Squats", "YaXPRqUwItQ"));
-        exercises.add(new Exercise("Calf Raises", "ommnfVcLWxQ"));
-        exercises.add(new Exercise("Pull-ups", "eGo4IYlbE5g"));
+        exercises1.add(new Exercise("Sit-ups", "jDwoBqPH0jk"));
+        exercises1.add(new Exercise("Pushups", "IODxDxX7oi4"));
+        exercises1.add(new Exercise("Planks", "ASdvN_XEl_c"));
+        exercises1.add(new Exercise("Pike Pushups", "sposDXWEB0A"));
+        exercises1.add(new Exercise("Dips", "2z8JmcrW-As"));
+        exercises1.add(new Exercise("Burpees", "dZgVxmf6jkA"));
+        exercises1.add(new Exercise("Jumping Jacks", "UpH7rm0cYbM"));
+        exercises1.add(new Exercise("Squats", "YaXPRqUwItQ"));
+        exercises1.add(new Exercise("Calf Raises", "ommnfVcLWxQ"));
+        exercises1.add(new Exercise("Pull-ups", "eGo4IYlbE5g"));
     }
 
 

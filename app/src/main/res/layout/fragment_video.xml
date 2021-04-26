@@ -1,29 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.VideoFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragments.VideoFragment">
 
-
-    <TextView
-        android:id="@+id/tvVideos"
+    <RelativeLayout
+        android:id="@+id/firstRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Videos"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+        tools:context=".fragments.GoalsFragment">
+
+        <TextView
+            android:id="@+id/tvGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="@string/your_goal"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvCustomGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvGoal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:text="Gain muscle/Lose fat" />
+
+        <TextView
+            android:id="@+id/tvSuggestedVids"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCustomGoal"
+            android:layout_centerHorizontal="false"
+            android:layout_marginStart="8sp"
+            android:layout_marginTop="42dp"
+            android:paddingBottom="10dp"
+            android:text="@string/for_you_string"
+            android:textSize="18sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvExercises1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvSuggestedVids"/>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvExercises"
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/secondRelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        tools:context=".fragments.GoalsFragment">
 
+        <TextView
+            android:id="@+id/tvMoreVids"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginStart="8sp"
+            android:layout_marginTop="42dp"
+            android:paddingBottom="10dp"
+            android:text="@string/more_string"
+            android:textSize="18sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvExercises2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvMoreVids"/>
+
+    </RelativeLayout>
 
 
 </LinearLayout>
+
+
