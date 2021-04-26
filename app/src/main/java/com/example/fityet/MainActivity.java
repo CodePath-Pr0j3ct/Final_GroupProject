@@ -8,7 +8,6 @@ import com.example.fityet.fragments.VideoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
 import com.example.fityet.fragments.TimerFragment;
-import com.example.fityet.fragments.GoalsFragment;
 import com.example.fityet.fragments.CalendarFragment;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -36,9 +35,6 @@ public class MainActivity extends AppCompatActivity {
                         //TODO: Update fragment
                         fragment = new TimerFragment();
                         break;
-                    case R.id.action_goals:
-                        fragment = new GoalsFragment();
-                        break;
                     case R.id.action_videos:
                         fragment = new VideoFragment();
                         break;
@@ -60,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //default selection will be
-        bottomNavigation.setSelectedItemId(R.id.action_goals);
+        bottomNavigation.setSelectedItemId(R.id.action_videos);
 
     }
 }
