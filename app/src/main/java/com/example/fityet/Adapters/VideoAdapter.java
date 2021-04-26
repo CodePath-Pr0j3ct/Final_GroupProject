@@ -1,88 +1,89 @@
 package com.example.fityet.Adapters;
 
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.fityet.Models.DetailActivity;
-import com.example.fityet.Models.Video;
 import com.example.fityet.R;
+import com.example.fityet.Exercise;
+
 
 import org.parceler.Parcels;
 
 import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
+
     Context context;
-    List<Video> videos;
+    List<Exercise> exercises;
 
-    public VideoAdapter(Context context, List<Video> videos){
-        this.context=context;
-        this.videos=videos;
-    }
-    public VideoAdapter(List<Video> videos){
-        this.videos=videos;
+    public VideoAdapter(Context context, List<Exercise> exercises) {
+        this.context = context;
+        this.exercises = exercises;
     }
 
+    // Usually involves inflating a layout from XML and returning the holder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.d("VideoAdapter", "onCreateViewHolder");
-        View videoView = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
-        return new ViewHolder(videoView);
+        Log.d("Exercise", "onCreateViewHolder");
+        View exerciseView = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
+        return new ViewHolder(exerciseView);
     }
 
-    //involves populating data into item through holder
+    // Involves populating data into the item through holder
     @Override
-    public void onBindViewHolder(@NonNull VideoAdapter.ViewHolder holder, int position) {
-        Log.d("MovieAdapter", "onBindViewHolder " + position);
-        Video video = videos.get(position);
-        holder.videoWeb.loadData(videos.get(position).getVideoURL(), "text/html", "utf-8");
-        holder.bind(video);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // Get movie at the passed in position
+        Exercise exercise = exercises.get(position);
+        // Bind the movie data into the ViewHolder
+        holder.bind(exercise);
     }
 
+    // Returns the total count of items in the list
     @Override
     public int getItemCount() {
-        return videos.size();
+        return exercises.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
-        WebView videoWeb;
-        RelativeLayout container;
+        TextView Name;
+        ImageView thumbNail;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            container = itemView.findViewById(R.id.container);
-            videoWeb = (WebView) itemView.findViewById(R.id.wvVideo);
-            videoWeb.getSettings().setJavaScriptEnabled(true);
-            videoWeb.setWebChromeClient(new WebChromeClient());
+            Name = itemView.findViewById(R.id.Name);
+            thumbNail = itemView.findViewById(R.id.thumbNail);
         }
 
-        public void bind(Video video) {
-            // 1.Register click listener on the whole row
-            container.setOnClickListener(new View.OnClickListener() {
+        public void bind(Exercise exercise) {
+            Name.setText(exercise.getName());
+            String imageUrl;
+            // Adjust imageUrl according to orientation
+            imageUrl = "https://img.youtube.com/vi/" + exercise.getId() + "/0.jpg";
+            Glide.with(context).load(imageUrl).into(thumbNail);
+
+            // Register click listener on whole row, and
+            // Navigate to new activity upon tap
+            thumbNail.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v){
-                    // 2.Navigate to a new activity on tap
+                public void onClick(View view) {
                     Intent i = new Intent(context, DetailActivity.class);
-                    i.putExtra("movie", Parcels.wrap(video));
-                    // Shared element transition
-                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, itemView, "profile");
-                    context.startActivity(i, options.toBundle());
+                    i.putExtra("exercise", Parcels.wrap(exercise));
+                    context.startActivity(i);
                 }
             });
         }
