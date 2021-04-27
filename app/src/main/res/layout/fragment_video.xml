@@ -12,7 +12,9 @@
     <RelativeLayout
         android:id="@+id/firstRelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingBottom="30dp"
         tools:context=".fragments.GoalsFragment">
 
         <TextView
@@ -49,18 +51,19 @@
             android:textSize="18sp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvExercises1"
-            android:layout_width="match_parent"
+            android:id="@+id/rvForYou"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvSuggestedVids"/>
-
+            android:layout_below="@+id/tvSuggestedVids" />
 
     </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/secondRelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         tools:context=".fragments.GoalsFragment">
 
         <TextView
@@ -69,14 +72,14 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="false"
             android:layout_marginStart="8sp"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="10dp"
             android:paddingBottom="10dp"
             android:text="@string/more_string"
             android:textSize="18sp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvExercises2"
-            android:layout_width="match_parent"
+            android:id="@+id/rvMore"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvMoreVids"/>
 
@@ -84,5 +87,3 @@
 
 
 </LinearLayout>
-
-
