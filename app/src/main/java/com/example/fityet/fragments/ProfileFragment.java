@@ -12,6 +12,9 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.Glide;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.fityet.Models.User;
 import android.widget.TextView;
 import com.parse.ParseFile;
@@ -32,10 +35,6 @@ import com.example.fityet.R;
 
 public class ProfileFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     private Button btnLogOut;
     private ImageView userPic;
@@ -49,41 +48,10 @@ public class ProfileFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private String mParam1;
-    private String mParam2;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PostsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
@@ -96,48 +64,37 @@ public class ProfileFragment extends Fragment {
         queryUser();
 
         btnLogOut = view.findViewById(R.id.btnLogOut);
-
-        tvUsername = view.findViewById(R.id.userImage);
-
+        tvUsername = view.findViewById(R.id.userName);
         userGoal = view.findViewById(R.id.customGoal);
-
         userWeight = view.findViewById(R.id.customWeight);
-
         userHeight = view.findViewById(R.id.customHeight);
-
         userEmail = view.findViewById(R.id.customEmail);
-
         userPic = view.findViewById(R.id.userImage);
 
-       /* tvUsername.setText(ParseUser.getCurrentUser().getUsername());
-        userGoal.setText(User.getKeyGoal());
-        userWeight.setText(User.getWeight());
-        userHeight.setText(User.getHeight());
-        userEmail.setText(ParseUser.getCurrentUser().getEmail());
-        ParseFile image = User.getAvatar(); */
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        tvUsername.setText(currentUser.getUsername());
+        userHeight.setText(currentUser.getString("height"));
+        userWeight.setText(currentUser.getString("weight"));
+        userGoal.setText(currentUser.getString("goal"));
+        userEmail.setText(currentUser.getEmail());
 
+        ParseFile image = currentUser.getParseFile("profilepic");
 
-        userGoal.setText(User.KEY_GOAL);
-        userWeight.setText(User.KEY_WEIGHT);
-        userHeight.setText(User.KEY_HEIGHT);
-        userEmail.setText(ParseUser.getCurrentUser().getEmail());
-        // ParseFile image = User.KEY_AVATAR;
-
-/*        if (image != null) {
-
-            Glide.with(getActivity().getApplicationContext()).load(image).transform(new CircleCrop()).into(userPic);
-
-        } */
+        //Taking profile picture from back4app
+        if (image != null) {
+            String imageURL = image.getUrl();
+            Glide.with(getContext())
+                    .load(imageURL)
+                    .transform(new CircleCrop())
+                    .into(userPic);
+        }
 
             btnLogOut.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     ParseUser.logOut();
-
                     Intent i = new Intent(getContext(), LoginActivity.class);
                     startActivity(i);
-
                 }
             });
 
@@ -162,11 +119,7 @@ public class ProfileFragment extends Fragment {
                         return;
 
                     }
-
                 }
-
             });
-
         }
-
     }

@@ -16,6 +16,7 @@ import com.example.fityet.Exercise;
 import com.example.fityet.Models.Video;
 import com.example.fityet.R;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,8 @@ public class VideoFragment extends Fragment {
         fillExercises();
 
         //FARIHA, IF YOU MADE PROFILE FRAGMENT'S GETTERS/SETTERS RUN PROPERLY, FIX THIS CODE TOO
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        userGoalName.setText(currentUser.getString("goal"));
         //userGoalName.setText(User.KEY_GOAL);
 
 

@@ -35,6 +35,24 @@
         android:ems="10"
         android:hint="@string/email" />
 
+    <EditText
+        android:id="@+id/etWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Your weight (KG)"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Your height (CM)"
+        android:inputType="textPersonName" />
+
     <Spinner
         android:id="@+id/goalsSpinner"
         android:layout_width="match_parent"

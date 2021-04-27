@@ -10,12 +10,12 @@ public class User extends ParseObject{
 
 
     public  final String KEY_AVATAR = "Avatar";
-   // public static final String KEY_AVATAR = "profilepic";
     public static final String KEY_GOAL = "goal";
     public static final String KEY_USER = "user";
     public static final String KEY_PROGRESS = "";
     public static final String KEY_WEIGHT = "";
     public static final String KEY_HEIGHT = "";
+    public static final String KEY_PROFILE_PIC = "profilepic";
 
     public ParseFile getAvatar(){
 
@@ -85,6 +85,14 @@ public class User extends ParseObject{
     public void setUser(ParseUser user) {
 
         put(KEY_USER, user);
+    }
+
+    public ParseFile getProfileImage(){
+        return getParseFile(KEY_PROFILE_PIC);
+    }
+
+    public void setProfileImage(ParseFile profileImage){
+        put(KEY_PROFILE_PIC, profileImage);
     }
 
 }
