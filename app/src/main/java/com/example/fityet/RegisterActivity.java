@@ -17,7 +17,7 @@ import android.content.Intent;
 
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private EditText etUsername, etPassword, etEmailAddress;
+    private EditText etUsername, etPassword, etEmailAddress, etWeight, etHeight;
     private Spinner spinnerGoal;
     private Button registerBtn;
 
@@ -30,6 +30,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         etEmailAddress = findViewById(R.id.etEmailAddress);
+        etWeight = findViewById(R.id.etWeight);
+        etHeight = findViewById(R.id.etHeight);
         spinnerGoal = findViewById(R.id.goalsSpinner);
         registerBtn = findViewById(R.id.btnRegister);
 
@@ -43,20 +45,22 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                 String password = etPassword.getText().toString();
                 String userEmail = etEmailAddress.getText().toString();
                 String userGoal = spinnerGoal.getSelectedItem().toString();
+                String weight = etWeight.getText().toString();
+                String height = etHeight.getText().toString();
 
-                // checking if the entered text is empty or not.
                 if (TextUtils.isEmpty(userName) && TextUtils.isEmpty(password)) {
                     Toast.makeText(RegisterActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 }
-
-                // calling a method to register a user.
-                registerUser(userName, password, userEmail, userGoal);
+                else {
+                    // calling a method to register a user.
+                    registerUser(userName, password, userEmail, weight, height, userGoal);
+                }
             }
         });
 
     }
 
-    private void registerUser(String userName, String password, String email, String goal) {
+    private void registerUser(String userName, String password, String email, String weight, String height, String goal) {
 
         ParseUser user = new ParseUser();
 
@@ -64,6 +68,16 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         user.setUsername(userName);
         user.setPassword(password);
         user.setEmail(email);
+
+        //Making sure weight and height is only digits
+        if(!TextUtils.isDigitsOnly(weight) || !TextUtils.isDigitsOnly(height))  {
+            Toast.makeText(RegisterActivity.this, "Please use only numbers", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else {
+            user.put("weight", weight);
+            user.put("height", height);
+        }
         //custom property is goal
         user.put("goal", goal);
 

@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/userImage"
-        android:layout_width="156dp"
-        android:layout_height="156dp"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="117dp"
-        tools:srcCompat="@tools:sample/avatars" />
+  <ImageView
+      android:id="@+id/userImage"
+      android:layout_width="156dp"
+      android:layout_height="156dp"
+      android:padding="10dp"
+      tools:ignore="ContentDescription"
+      tools:layout_editor_absoluteX="168dp"
+      tools:layout_editor_absoluteY="117dp"
+      tools:src="@tools:sample/avatars" />
 
     <ProgressBar
         android:id="@+id/userProgress"
@@ -25,8 +27,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="0dp"
         android:layout_toEndOf="@+id/userImage"
-        android:indeterminate="true"
-        android:progressTint="#606060" />
+        android:max="100"
+        android:progress="10"
+        android:progressTint="#8E24AA" />
 
     <TextView
         android:id="@+id/userName"
@@ -48,26 +51,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/userImage"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="33dp"
         android:text="@string/your_goal"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/customGoal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="46dp"
         android:layout_below="@+id/userImage"
         android:layout_alignBottom="@+id/tvGoal"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="-23dp"
         android:layout_toEndOf="@+id/tvEmail"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:text="Gain muscle" />
+        tools:text="Gain muscle/Lose weight" />
 
     <TextView
         android:id="@+id/tvWeight"
@@ -75,18 +78,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvGoal"
         android:layout_alignStart="@+id/tvGoal"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="45dp"
         android:text="@string/your_weight"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/customWeight"
-        android:layout_width="wrap_content"
+        android:layout_width="189dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/customGoal"
         android:layout_alignTop="@+id/tvWeight"
         android:layout_alignEnd="@+id/customGoal"
         android:layout_alignBottom="@+id/tvWeight"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="1dp"
         android:textSize="18sp"
         android:textStyle="bold"
         tools:text="77" />
@@ -97,18 +105,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvWeight"
         android:layout_alignStart="@+id/tvWeight"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="48dp"
         android:text="@string/your_height"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/customHeight"
-        android:layout_width="wrap_content"
+        android:layout_width="248dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/customWeight"
         android:layout_alignTop="@+id/tvHeight"
         android:layout_alignEnd="@+id/customWeight"
         android:layout_alignBottom="@+id/tvHeight"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="-3dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="3dp"
         android:textSize="18sp"
         android:textStyle="bold"
         tools:text="1.5" />
@@ -119,21 +132,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvHeight"
         android:layout_alignStart="@+id/tvHeight"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="48dp"
         android:text="@string/your_email"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/customEmail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="54dp"
         android:layout_alignStart="@+id/customHeight"
         android:layout_alignTop="@+id/tvEmail"
         android:layout_alignEnd="@+id/customHeight"
         android:layout_alignBottom="@+id/tvEmail"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-34dp"
+        android:layout_marginBottom="-30dp"
         android:textSize="17sp"
         android:textStyle="bold"
-        tools:text="user@email.com" />
+        tools:text="farihaahmedlily@email.com" />
 
     <Button
         android:id="@+id/btnLogOut"
@@ -141,7 +159,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvEmail"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="91dp"
         android:gravity="center"
         android:text="@string/log_out" />
 
