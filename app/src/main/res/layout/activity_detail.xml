@@ -14,6 +14,8 @@
     <TextView
         android:id="@+id/exname"
         android:layout_width="match_parent"
+        android:paddingTop="16dp"
+        android:layout_marginStart="8dp"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         tools:text="Bicycle crunch" />

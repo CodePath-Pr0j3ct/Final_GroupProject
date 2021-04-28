@@ -6,8 +6,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fityet.Adapters.VideoAdapter;
-import com.example.fityet.Exercise;
 import com.example.fityet.R;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -34,7 +32,8 @@ public class DetailActivity extends YouTubeBaseActivity {
         exName = findViewById(R.id.exname);
         youTubePlayerView = findViewById(R.id.player);
 
-        Exercise exercise = Parcels.unwrap(getIntent().getParcelableExtra("exercise"));
+        //Exercise exercise = Parcels.unwrap(getIntent().getParcelableExtra("exercise"));
+        HorizontalModel exercise = Parcels.unwrap(getIntent().getParcelableExtra("exercise"));
         exName.setText(exercise.getName());
         String youtubeKey = exercise.getId();
         initializeYoutube(youtubeKey);

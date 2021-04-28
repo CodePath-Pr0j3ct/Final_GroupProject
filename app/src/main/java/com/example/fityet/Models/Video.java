@@ -29,6 +29,7 @@ public class Video {
     }
 
     public Video(String URL){
+
         this.videoURL=URL;
     }
 
