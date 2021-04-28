@@ -1,6 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".fragments.VideoFragment">-->
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/firstRelativeLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="1"-->
+<!--        android:paddingBottom="30dp"-->
+<!--        tools:context=".fragments.GoalsFragment">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvGoal"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="25dp"-->
+<!--            android:text="@string/your_goal"-->
+<!--            android:textSize="18sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvCustomGoal"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/tvGoal"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:textSize="22sp"-->
+<!--            android:textStyle="bold"-->
+<!--            tools:text="Gain muscle/Lose fat" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvSuggestedVids"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/tvCustomGoal"-->
+<!--            android:layout_centerHorizontal="false"-->
+<!--            android:layout_marginStart="8sp"-->
+<!--            android:layout_marginTop="42dp"-->
+<!--            android:paddingBottom="10dp"-->
+<!--            android:text="@string/for_you_string"-->
+<!--            android:textSize="18sp" />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rvForYou"-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/tvSuggestedVids" />-->
+
+<!--    </RelativeLayout>-->
+
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/secondRelativeLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="1"-->
+<!--        tools:context=".fragments.GoalsFragment">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvMoreVids"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerHorizontal="false"-->
+<!--            android:layout_marginStart="8sp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:paddingBottom="10dp"-->
+<!--            android:text="@string/more_string"-->
+<!--            android:textSize="18sp" />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rvMore"-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/tvMoreVids"/>-->
+
+<!--    </RelativeLayout>-->
+
+
+<!--</LinearLayout>-->
+
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,14 +97,6 @@
     android:orientation="vertical"
     tools:context=".fragments.VideoFragment">
 
-    <RelativeLayout
-        android:id="@+id/firstRelativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:paddingBottom="30dp"
-        tools:context=".fragments.GoalsFragment">
-
         <TextView
             android:id="@+id/tvGoal"
             android:layout_width="wrap_content"
@@ -24,6 +104,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
             android:text="@string/your_goal"
             android:textSize="18sp" />
 
@@ -34,56 +116,16 @@
             android:layout_below="@+id/tvGoal"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
             android:textSize="22sp"
             android:textStyle="bold"
             tools:text="Gain muscle/Lose fat" />
 
-        <TextView
-            android:id="@+id/tvSuggestedVids"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvCustomGoal"
-            android:layout_centerHorizontal="false"
-            android:layout_marginStart="8sp"
-            android:layout_marginTop="42dp"
-            android:paddingBottom="10dp"
-            android:text="@string/for_you_string"
-            android:textSize="18sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvForYou"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvSuggestedVids" />
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/secondRelativeLayout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/tvCustomGoal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        tools:context=".fragments.GoalsFragment">
+        android:id="@+id/recyclerview"/>
 
-        <TextView
-            android:id="@+id/tvMoreVids"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="false"
-            android:layout_marginStart="8sp"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/more_string"
-            android:textSize="18sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMore"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvMoreVids"/>
-
-    </RelativeLayout>
-
-
-</LinearLayout>
+</RelativeLayout>
