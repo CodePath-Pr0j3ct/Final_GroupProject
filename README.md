@@ -32,7 +32,7 @@ Paces the user in reaching a specific fitness goal using regularly scheduled ala
 - [x] App provides guidance for inexperienced user (youtube tutorials for exercises)
 - [x] User can browse other exercise tutorials based on their need (One page with different sections/list of exercise)
 - [ ] Setting (Change goal, schedule, type of exercise)
-- [ ] Progress showing how far/close you are from achieving your goals.
+- [ ] Progress showing how far/close User is from achieving your goals.
 
 **Optional Nice-to-have Stories**
 
@@ -44,13 +44,12 @@ Paces the user in reaching a specific fitness goal using regularly scheduled ala
 
 * Login screen (AHMED)
 * Register screen - User signs up/logs into their account (FARIHA)
-* Goal creation screen - User states the goal they hope to achieve (LILY)
 * Personalized goal screen - User can view goal and exercises (LILY)
 * User profile screen - User views their progress and goal (FARIHA)
 * Settings screen - User may update information
 * Schedule set-up screen - User arranges their own workout schedule (AHMED)
 * Schedule view screen - User can view their own schedule (AHMED)
-* Youtube guides screen- User can view YouTube tutorials for certain exercises (FARIHA)
+* Youtube guides screen- User can view YouTube tutorials for exercises (FARIHA)
 * Notification screen- User may either dismiss or commit to workout (LILY)
 * Workout screen- User sees visual image and timer while music plays (LILY)
 ADDITIONAL
@@ -63,10 +62,9 @@ ADDITIONAL
 **Tab Navigation** (Tab to Screen)
 
 * Schedule/Timer
-* Goals
 * Calendar
 * User Profile/Settings
-* YouTube guides
+* Videos
 
 
 Optional:
@@ -75,7 +73,7 @@ Optional:
 **Flow Navigation** (Screen to Screen)
 * Register screen -> Login screen
 * User profile -> Settings screen
-* Goal creation screen -> Personalized goals screen
+* Video screen
 * Schedule set-up screen -> Schedule view
 * Notification screen -> Workout screen
 
@@ -136,10 +134,6 @@ Schedule
   * (Read/GET) Query description
   * (Read/GET) Query progressBar
   * (Update/PUT) Update progressBar
-
-* Goals Screen
-  * (Read/GET) Query userGoal
-  * (Update/PUT) Update userGoal
 
 * Video Guides Screen
   * (Read/GET) Query userGoal
