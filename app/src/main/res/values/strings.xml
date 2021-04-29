@@ -17,7 +17,7 @@
         <item>Gain flexibility/Maintain balance</item>
     </string-array>
 
-    <string name="hello_timer_fragment">This is the timer fragment</string>
+    <string name="coming_up">Coming up...</string>
     <string name="hello_video_fragment">This is the video fragment</string>
     <string name="hello_calendar_fragment">This is the calendar fragment</string>
     <string name="for_you_string">For You</string>
