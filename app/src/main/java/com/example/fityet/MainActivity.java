@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //default selection will be
-        bottomNavigation.setSelectedItemId(R.id.action_videos);
+        bottomNavigation.setSelectedItemId(R.id.action_calendar);
 
     }
 }
