@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-
     <application
         android:name=".ParseApplication"
         android:allowBackup="true"
@@ -19,6 +18,13 @@
         android:theme="@style/Theme.FitYet">
         <activity android:name=".Models.ScheduleActivity" />
         <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DisplayExercise">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,5 +56,8 @@
         <service android:name=".service.AlarmService" />
 
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
