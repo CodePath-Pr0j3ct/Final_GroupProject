@@ -12,16 +12,25 @@
     <string name="your_height">Your height</string>
     <string name="your_email">Email address</string>
 
-    <string-array name="spinner_goals">
-        <item>Lose fat/Build Muscle</item>
-        <item>Gain flexibility/Maintain balance</item>
-    </string-array>
-
     <string name="coming_up">Coming up...</string>
+
     <string name="hello_video_fragment">This is the video fragment</string>
     <string name="hello_calendar_fragment">This is the calendar fragment</string>
     <string name="for_you_string">For You</string>
     <string name="more_string">More</string>
+    <string name="title_activity_display_exercise">DisplayExercise</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string-array name="spinner_goals">
+        <item>Lose fat/Build Muscle</item>
+        <item>Gain flexibility/Maintain balance</item>
+    </string-array>
 
 
 </resources>

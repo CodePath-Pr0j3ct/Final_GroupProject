@@ -1,5 +1,6 @@
 package com.example.fityet.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,7 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.fityet.DisplayExercise;
+import com.example.fityet.Models.DetailActivity;
 import com.example.fityet.R;
+
+import org.parceler.Parcels;
 
 import java.util.Locale;
 
