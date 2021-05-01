@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.os.CountDownTimer;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import android.widget.Button;
 
 import com.example.fityet.DisplayExercise;
 import com.example.fityet.Models.DetailActivity;
+import com.example.fityet.AlarmComponents.AlarmDialog;
+
 import com.example.fityet.R;
 
 import org.parceler.Parcels;
@@ -29,10 +32,9 @@ public class TimerFragment extends Fragment {
 
     TextView tvCountdown, tvComingUp, tvExercise;
     ImageView tvThumbnail;
-    Button btnTimer;
 
     CountDownTimer countdownTimer;
-    long milliRemaining = 600000;
+    long milliRemaining = 6000;
     boolean timerRunning;
 
     public TimerFragment() {
@@ -62,34 +64,23 @@ public class TimerFragment extends Fragment {
 
         tvThumbnail = view.findViewById(R.id.thumbNail);
 
-        btnTimer = view.findViewById(R.id.btnTime);
-
-        btnTimer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startStop();
-
-            }
-        });
+        startStop();
 
         updateTimer();
 
     }
 
+    public void openDialog(){
+
+        AlarmDialog alarmDialog = new AlarmDialog();
+
+        alarmDialog.show(getActivity().getSupportFragmentManager(), "Alarm dialog");
+
+    }
+
     public void startStop() {
 
-        if(timerRunning) {
-
-            stopTimer();
-
-        }
-
-        else {
-
             startTimer();
-
-        }
 
     }
 
@@ -108,20 +99,11 @@ public class TimerFragment extends Fragment {
 
             public void onFinish() {
 
-
             }
 
         }.start();
 
         timerRunning = true;
-
-    }
-
-    public void stopTimer() {
-
-        countdownTimer.cancel();
-
-        timerRunning = false;
 
     }
 
@@ -135,6 +117,12 @@ public class TimerFragment extends Fragment {
 
         tvCountdown.setText(timeRemaining);
 
-    }
+        if(minutes == 0 && seconds == 0){
 
-}
+            openDialog();
+
+        }
+
+        }
+
+    }

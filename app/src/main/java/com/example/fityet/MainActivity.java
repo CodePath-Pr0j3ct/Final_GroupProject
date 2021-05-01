@@ -8,7 +8,7 @@ import com.example.fityet.fragments.VideoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
 import com.example.fityet.fragments.TimerFragment;
-import com.example.fityet.fragments.CalendarFragment;
+import com.example.fityet.fragments.ScheduleFragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 import androidx.fragment.app.FragmentManager;
@@ -39,11 +39,10 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new VideoFragment();
                         break;
                     case R.id.action_calendar:
-                        fragment = new CalendarFragment();
+                        fragment = new ScheduleFragment();
                         break;
                     case R.id.action_profile:
                     default:
-                        //TODO: Update fragment
                         fragment = new ProfileFragment();
                         break;
                 }
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //default selection will be
-        bottomNavigation.setSelectedItemId(R.id.action_videos);
+        bottomNavigation.setSelectedItemId(R.id.action_calendar);
 
     }
 }

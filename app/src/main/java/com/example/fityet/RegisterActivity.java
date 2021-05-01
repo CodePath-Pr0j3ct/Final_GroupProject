@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.text.TextUtils;
 import android.os.Bundle;
@@ -15,11 +16,22 @@ import com.parse.SignUpCallback;
 import com.parse.ParseException;
 import android.content.Intent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
 
     private EditText etUsername, etPassword, etEmailAddress, etWeight, etHeight;
     private Spinner spinnerGoal;
-    private Button registerBtn;
+    //the lists that we use in our spinner
+    private final List<String> buildMuscle = new ArrayList<>();
+    private final List<String> gainFlex = new ArrayList<>();
+
+    //Array to display in spinner based on user pref
+    public List<String> selectedArray = new ArrayList<String>();
+
+    public static RegisterActivity registerActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +45,43 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         etWeight = findViewById(R.id.etWeight);
         etHeight = findViewById(R.id.etHeight);
         spinnerGoal = findViewById(R.id.goalsSpinner);
-        registerBtn = findViewById(R.id.btnRegister);
+        Button registerBtn = findViewById(R.id.btnRegister);
+
+        /*getListInfo(getResources().getStringArray(R.array.lose_fat_build_muscle), buildMuscle);
+        getListInfo(getResources().getStringArray(R.array.gain_flexibility_maintain_balance), gainFlex);
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+
+        //Items in your first spinner;
+        categories.add("Lose fat/Build Muscle");
+        categories.add("Gain Flex/Maintain balance");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // attaching data adapter to spinner
+        spinnerGoal.setAdapter(dataAdapter);
+
+
+        spinnerGoal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                if(currentUser.getString("goal").equals("Lose fat/Build Muscle")) {
+                    selectedArray = buildMuscle;
+                }
+                else
+                    selectedArray = gainFlex;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });*/
 
         // adding on click listener for our button.
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +107,12 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         });
 
     }
+
+    /*private void getListInfo(String[] stringArray, List<String> list) {
+        for (int i = 0; i < stringArray.length; i++) {
+            list.add(stringArray[i]);
+        }
+    }*/
 
     private void registerUser(String userName, String password, String email, String weight, String height, String goal) {
 
