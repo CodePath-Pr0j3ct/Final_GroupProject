@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".Models.ScheduleActivity">
+
+    <!--<EditText
+        android:id="@+id/etHour"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="56dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName|time" />
+
+    <EditText
+        android:id="@+id/etMinute"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="32dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName|time" />-->
+
+    <TextView
+        android:id="@+id/tvalarm"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="61dp"
+        android:gravity="center"
+        android:hint="Select time"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="147dp"
+        android:text="Exercise"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <Spinner
+        android:id="@+id/ExerciseSpinner"
+        android:layout_width="343dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="196dp"
+        android:backgroundTint="#8E24AA"
+        android:dropDownWidth="wrap_content"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/tvPreferred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginBottom="28dp"
+        android:text="Preferred days"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="228dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cbMon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="8dp"
+            android:text="Mon"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cbTue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/cbMon"
+            android:text="Tue"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cbwed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/cbTue"
+            android:text="Wed"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cbThu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/cbwed"
+            android:text="Thu"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginBottom="192dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cbFri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="2dp"
+            android:text="Fri"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cbSat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/cbFri"
+            android:text="Sat"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cbSun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/cbSat"
+            android:text="Sun"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cbRecurring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:text="Recurring"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="416dp"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-5dp"
+        android:layout_marginBottom="106dp">
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="149dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_vertical"
+            android:text="Save" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
