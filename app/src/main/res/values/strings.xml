@@ -17,31 +17,7 @@
         <item>Gain flexibility/Maintain balance</item>
     </string-array>
 
-    <string-array name="lose_fat_build_muscle">
-        <item>"Sit-ups"</item>
-        <item>"Push-ups"</item>
-        <item>"Planks"</item>
-        <item>"Pike Push-ups"</item>
-        <item>"Dips"</item>
-        <item>"Burpees"</item>
-        <item>"Jumping Jacks"</item>
-        <item>"Squats"</item>
-        <item>"Calf Raises"</item>
-        <item>"Pull-ups"</item>
-    </string-array>
 
-    <string-array name="gain_flexibility_maintain_balance">
-        <item>"Standing Crunch with Clap"</item>
-        <item>"Lunge Hip Flexor Stretch"</item>
-        <item>"Flamingo Stand"</item>
-        <item>"Chair Leg Raises"</item>
-        <item>"Quad Stretch"</item>
-        <item>"Butterfly Stretch"</item>
-        <item>"Tree Pose"</item>
-        <item>"T-Stand With Side Bend"</item>
-        <item>"Wall Pushups"</item>
-        <item>"Side Kick"</item>
-    </string-array>
 
     <string name="hello_timer_fragment">This is the timer fragment</string>
     <string name="coming_up">Coming up...</string>
@@ -52,7 +28,5 @@
     <string name="add">Add</string>
     <string name="click_add_to_plan_a_schedule">Click add to plan a schedule</string>
 
-    <string name="commit">Commit</string>
-    <string name="dismiss">Dismiss</string>
 
 </resources>
