@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,22 +25,27 @@ import android.widget.Toast;
 
 import com.example.fityet.R;
 import com.example.fityet.RegisterActivity;
+import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import static java.security.AccessController.getContext;
 
 public class ScheduleActivity extends AppCompatActivity {
 
     CheckBox cb1, cb2, cb3, cb4, cb5, cb6, cb7;
-    TextView tvAlarm;
+    TextView tvSetTime;
     Spinner exerciseSpinner;
     Button btnSave;
-  //  EditText etHour;
-  //  EditText etMin;
+    ArrayAdapter<String> adapter;
+    ParseUser currentUser;
+    CheckBox[] checks;
 
     int hour, min;
     private final List<String> buildMuscle = new ArrayList<>();
@@ -47,16 +53,15 @@ public class ScheduleActivity extends AppCompatActivity {
 
 
     @SuppressLint("ResourceType")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
-        Intent intent = getIntent();
-        String value = intent.getStringExtra("key");
 
-        tvAlarm = findViewById(R.id.tvalarm);
-        exerciseSpinner = findViewById(R.id.goalsSpinner);
+        tvSetTime = findViewById(R.id.tvalarm);
+        exerciseSpinner = findViewById(R.id.ExerciseSpinner);
         cb1 = findViewById(R.id.cbMon);
         cb2 = findViewById(R.id.cbTue);
         cb3 = findViewById(R.id.cbwed);
@@ -64,9 +69,10 @@ public class ScheduleActivity extends AppCompatActivity {
         cb5 = findViewById(R.id.cbFri);
         cb6 = findViewById(R.id.cbSat);
         cb7 = findViewById(R.id.cbSun);
-     //   etHour = findViewById(R.id.etHour);
-      //  etMin = findViewById(R.id.etMinute);
-/*
+        checks = new CheckBox[]{cb1,cb2,cb3,cb4,cb5,cb6,cb7};
+        //etHour = findViewById(R.id.etHour);
+       // etMin = findViewById(R.id.etMinute);
+
         buildMuscle.add("Sit-ups");
         buildMuscle.add("Push-ups");
         buildMuscle.add("Planks");
@@ -87,54 +93,55 @@ public class ScheduleActivity extends AppCompatActivity {
         gainFlex.add("Tree Pose");
         gainFlex.add("T-Stand With Side Bend");
         gainFlex.add("Wall Pushups");
-        gainFlex.add("Side Kick");*/
+        gainFlex.add("Side Kick");
 
-        tvAlarm.setOnClickListener(new View.OnClickListener() {
+        currentUser = ParseUser.getCurrentUser();
+        if (currentUser.getString("goal").equals("Build muscle")){
+            adapter = new ArrayAdapter<String>(
+                    this, android.R.layout.simple_spinner_item, buildMuscle);
+            adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        }
+        else{
+            adapter = new ArrayAdapter<String>(
+                    this, android.R.layout.simple_spinner_item, gainFlex);
+            adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        }
+
+
+        exerciseSpinner.setAdapter(adapter);
+
+
+        tvSetTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Initialize time picker dialog
-                TimePickerDialog timePickerDialog = new TimePickerDialog(
-                        ScheduleActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                final Calendar c = Calendar.getInstance();
+                int hourNow = c.get(Calendar.HOUR_OF_DAY);
+                int minuteNow = c.get(Calendar.MINUTE);
+
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(ScheduleActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
 
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        //Initialise hour and minute
-                        hour = hourOfDay;
-                        min = minute;
-
-                        //Store hour and minute in String
-                        String time = hour + ":" + minute;
-
-                        //Initialize 24 hours time format
-                        @SuppressLint("SimpleDateFormat")
-                        SimpleDateFormat f24hrs = new SimpleDateFormat(
-                                "HH:mm"
-                        );
-                        try {
-                            Date date = f24hrs.parse(time);
-                            //Initialize 12 hours format
-                            @SuppressLint("SimpleDateFormat")
-                            SimpleDateFormat f12hrs = new SimpleDateFormat(
-                                    "hh:mm aa"
-                            );
-                            //Set selected time on text view
-                            tvAlarm.setText(f12hrs.format(date));
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, 12, 0, false);
-                //Set transparent background
-                timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                //Displayed prev time
-                timePickerDialog.updateTime(hour,min);
-                //Show dialog
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay,
+                                                  int minute) {
+                                if (minute <= 9){
+                                    tvSetTime.setText(hourOfDay + ":0" + minute);
+                                }
+                                else {
+                                    tvSetTime.setText(hourOfDay + ":" + minute);
+                                }
+                                hour = hourOfDay;
+                                min = minute;
+                            }
+                        }, hourNow, minuteNow, false);
                 timePickerDialog.show();
-
             }
         });
+
+
+
+
 
 /*
         // Creating adapter for spinner and also reference the current list from first activity to get right info
@@ -159,31 +166,44 @@ public class ScheduleActivity extends AppCompatActivity {
 
 
         //GOTTA FIX THIS BUTTON ARGHHHHH
-
-      /*  btnSave.setOnClickListener(new View.OnClickListener() {
+        btnSave = findViewById(R.id.btnSave);
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-               *//* //Instead of this alarm, we need to call our own apps alarm
-                Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-                i.putExtra(AlarmClock.EXTRA_HOUR, hour);
-                i.putExtra(AlarmClock.EXTRA_MINUTES, min);*//*
-                Toast.makeText(ScheduleActivity.this, "Schedule saved", Toast.LENGTH_SHORT).show();
-                saveTime(hour, min);
+                String daysOfExercise = getDays();
+                String exercise = exerciseSpinner.getSelectedItem().toString();
+                Exercise exerciseObj = new Exercise();
+                exerciseObj.setExercise(exercise);
+                exerciseObj.setHour(hour);
+                exerciseObj.setMinutes(min);
+                exerciseObj.setDaysOfWeek(daysOfExercise);
+                exerciseObj.setUser(currentUser);
+                exerciseObj.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e != null){
+                            Log.e("Schedule Activity", "Error while saving", e);
+                            return;
+                        }
+                        Log.i("Schedule Activity",  "Exercise Saved");
+                    }
+                });
             }
-        });*/
+        });
 
 
     }
 
-
-    //Function to save time in back4app
-    private void saveTime(int hour, int minute) {
-        ParseUser user = ParseUser.getCurrentUser();
-
-            user.put("hour", hour);
-            user.put("minute", minute);
-
-            //Somehow continues
+    private String getDays() {
+        StringBuilder daysOfWeek = new StringBuilder("0000000");
+        for (int i = 0; i < daysOfWeek.length(); i++){
+            if(checks[i].isChecked()){
+                daysOfWeek.setCharAt(i, '1');
+            }
+        }
+        return daysOfWeek.toString();
     }
+
+
+
 }
