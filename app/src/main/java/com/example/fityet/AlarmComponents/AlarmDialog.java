@@ -39,7 +39,7 @@ public class AlarmDialog extends AppCompatDialogFragment {
                 //When user 'commits' to exercise, they will be taken to ahmed's countdown activity
                 Intent i = new Intent(getContext(), DetailActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.putExtra("exercise", Parcels.wrap(exercise));
+                //i.putExtra("exercise", Parcels.wrap(exercise));
                 getContext().startActivity(i);
 
                 dialog.dismiss();
