@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.LayoutInflater;
+import com.example.fityet.Models.DetailActivity;
 
 import com.example.fityet.R;
 
@@ -36,11 +37,10 @@ public class AlarmDialog extends AppCompatDialogFragment {
             public void onClick(DialogInterface dialog, int which) {
 
                 //When user 'commits' to exercise, they will be taken to ahmed's countdown activity
-
-                //Intent i = new Intent(getContext(), DetailActivity.class);
-                //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Intent i = new Intent(getContext(), DetailActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 //i.putExtra("exercise", Parcels.wrap(exercise));
-                //getContext().startActivity(i);
+                getContext().startActivity(i);
 
                 dialog.dismiss();
 

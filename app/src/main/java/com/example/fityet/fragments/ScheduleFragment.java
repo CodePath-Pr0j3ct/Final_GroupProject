@@ -84,6 +84,9 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
         dayOfTheWeek = view.findViewById(R.id.dayOfWeek);
         calendar = Calendar.getInstance();
         dayOfTheWeek.setText(days[counterForDay]);
+        dateFormat = new SimpleDateFormat("EEE, MMM d, yyyy");
+        date = dateFormat.format(calendar.getTime());
+        today.setText(date);
 
         rvExercises = view.findViewById(R.id.rvExercises);
         btnNext = view.findViewById(R.id.next);
