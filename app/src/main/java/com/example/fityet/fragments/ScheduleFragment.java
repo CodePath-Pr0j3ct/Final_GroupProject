@@ -84,9 +84,6 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
         dayOfTheWeek = view.findViewById(R.id.dayOfWeek);
         calendar = Calendar.getInstance();
         dayOfTheWeek.setText(days[counterForDay]);
-        dateFormat = new SimpleDateFormat("EEE, MMM d, yyyy");
-        date = dateFormat.format(calendar.getTime());
-        today.setText(date);
 
         rvExercises = view.findViewById(R.id.rvExercises);
         btnNext = view.findViewById(R.id.next);
@@ -110,8 +107,6 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
         rvExercises.setAdapter(exerciseAdapter);
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
         queryExercises();
-
-
 
         // Get a reference for the week view in the layout.
         /*mWeekView = view.findViewById(R.id.weekView);
@@ -175,9 +170,6 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
         dayOfTheWeek.setText(days[counterForDay]);
         queryExercises();
     }
-
-
-
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
