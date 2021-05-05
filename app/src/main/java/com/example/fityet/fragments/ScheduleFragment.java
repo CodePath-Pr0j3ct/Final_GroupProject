@@ -11,7 +11,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.fityet.Adapters.ExerciseAdapter;
 import com.example.fityet.MainActivity;
 import com.example.fityet.Models.Exercise;
 import com.example.fityet.Models.ScheduleActivity;
@@ -53,6 +56,7 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
     private Button btnAdd;
     private Button btnNext;
     private RecyclerView rvExercises;
+    protected ExerciseAdapter exerciseAdapter;
 
     //AlarmCursorAdapter cursorAdapter;
     // AlarmReminderDbHelper alarmReminderDbHelper = new AlarmReminderDbHelper(this);
@@ -77,7 +81,6 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        queryExercises();
         dayOfTheWeek = view.findViewById(R.id.dayOfWeek);
         calendar = Calendar.getInstance();
         dayOfTheWeek.setText(days[counterForDay]);
@@ -98,6 +101,12 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
                 goToScheduleAdd();
             }
         });
+        exercisesForDay = new ArrayList<>();
+        allExercises = new ArrayList<>();
+        exerciseAdapter = new ExerciseAdapter(getContext(), exercisesForDay);
+        rvExercises.setAdapter(exerciseAdapter);
+        rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
+        queryExercises();
 
 
 
@@ -132,16 +141,18 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
             @Override
             public void done(List<Exercise> objects, ParseException e) {
                 exercisesForDay = new ArrayList<>();
-                allExercises = new ArrayList<>();
-                //Log.d("exercises: ", objects.toString());
                 for (Exercise object : objects) {
                    // Log.d("fiiin" , ""+ Character.compare(object.getDaysOfTheWeek().charAt(counterForDay), '1'));
-                    allExercises.add(object);
                     if (Character.compare(object.getDaysOfTheWeek().charAt(counterForDay), '1') == 0){
                         exercisesForDay.add(object);
                         //Log.d("fiiin", "" + exercises.size());
                     }
                 }
+                allExercises.addAll(objects);
+                Log.d("ScheduleFragmentTag", exercisesForDay.toString());
+                exerciseAdapter.clear();
+                exerciseAdapter.addAll(exercisesForDay);
+                exerciseAdapter.notifyDataSetChanged();
             }
             //this is where u can pass the data into something for alarm
         });
@@ -159,6 +170,7 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
             counterForDay = 0;
         }
         dayOfTheWeek.setText(days[counterForDay]);
+        queryExercises();
     }
 
 
