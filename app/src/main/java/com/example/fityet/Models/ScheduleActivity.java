@@ -4,36 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.provider.AlarmClock;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.fityet.R;
-import com.example.fityet.RegisterActivity;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-
-import java.text.SimpleDateFormat;
+import com.example.fityet.fragments.ScheduleFragment;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
+import android.content.Intent;
 
 import static java.security.AccessController.getContext;
 
@@ -51,14 +41,12 @@ public class ScheduleActivity extends AppCompatActivity {
     private final List<String> buildMuscle = new ArrayList<>();
     private final List<String> gainFlex = new ArrayList<>();
 
-
     @SuppressLint("ResourceType")
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
-
 
         tvSetTime = findViewById(R.id.tvalarm);
         exerciseSpinner = findViewById(R.id.ExerciseSpinner);
@@ -107,9 +95,7 @@ public class ScheduleActivity extends AppCompatActivity {
             adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         }
 
-
         exerciseSpinner.setAdapter(adapter);
-
 
         tvSetTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +103,6 @@ public class ScheduleActivity extends AppCompatActivity {
                 final Calendar c = Calendar.getInstance();
                 int hourNow = c.get(Calendar.HOUR_OF_DAY);
                 int minuteNow = c.get(Calendar.MINUTE);
-
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(ScheduleActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -135,13 +120,11 @@ public class ScheduleActivity extends AppCompatActivity {
                                 min = minute;
                             }
                         }, hourNow, minuteNow, false);
+
                 timePickerDialog.show();
+
             }
         });
-
-
-
-
 
 /*
         // Creating adapter for spinner and also reference the current list from first activity to get right info
@@ -164,7 +147,6 @@ public class ScheduleActivity extends AppCompatActivity {
         //  exerciseSpinner.setAdapter(dataAdapter);
 */
 
-
         //GOTTA FIX THIS BUTTON ARGHHHHH
         btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -183,14 +165,33 @@ public class ScheduleActivity extends AppCompatActivity {
                     public void done(ParseException e) {
                         if (e != null){
                             Log.e("Schedule Activity", "Error while saving", e);
-                            return;
+
                         }
+
                         Log.i("Schedule Activity",  "Exercise Saved");
                     }
                 });
+
+                clearActivity();
+
             }
         });
 
+    }
+
+    private void clearActivity(){
+
+        Toast.makeText(getApplicationContext(), "New alarm set", Toast.LENGTH_SHORT).show();
+
+        tvSetTime.setText(null);
+
+        for (int i = 0; i < 7; i++) {
+
+            checks[i].setChecked(false);
+
+        }
+
+        exerciseSpinner.setSelection(0);
 
     }
 
