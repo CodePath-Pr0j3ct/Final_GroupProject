@@ -73,8 +73,7 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
 
         today = view.findViewById(R.id.tvDateTime);
         calendar = Calendar.getInstance();
-       // dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        dateFormat = new SimpleDateFormat("EEE, MMM d, ''yy");
+        dateFormat = new SimpleDateFormat("EEE, MMM d, yyyy");
         date = dateFormat.format(calendar.getTime());
         today.setText(date);
 

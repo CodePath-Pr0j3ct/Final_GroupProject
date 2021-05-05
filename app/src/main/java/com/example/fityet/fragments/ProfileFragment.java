@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,9 +14,6 @@ import com.bumptech.glide.Glide;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
-import com.example.fityet.Models.User;
 import android.widget.TextView;
 import com.parse.ParseFile;
 import com.example.fityet.LoginActivity;
@@ -23,7 +21,6 @@ import com.parse.ParseQuery;
 import com.parse.FindCallback;
 import android.content.Intent;
 import java.util.List;
-import android.widget.Toast;
 import com.parse.ParseException;
 import android.widget.ImageView;
 import com.parse.ParseUser;
@@ -35,7 +32,6 @@ import com.example.fityet.R;
 
 public class ProfileFragment extends Fragment {
 
-
     private Button btnLogOut;
     private ImageView userPic;
     private TextView tvUsername;
@@ -43,6 +39,7 @@ public class ProfileFragment extends Fragment {
     private TextView userWeight;
     private TextView userHeight;
     private TextView userEmail;
+    public static final String TAG = "Profile Fragment";
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -111,11 +108,12 @@ public class ProfileFragment extends Fragment {
 
                     if (e == null) {
                         // The query was successful.
-                        Toast.makeText(getActivity(), "User info success", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "User info success");
+
 
                     } else {
                         // Something went wrong.
-                        Toast.makeText(getActivity(), "User info failure", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "User info failure");
                         return;
 
                     }
