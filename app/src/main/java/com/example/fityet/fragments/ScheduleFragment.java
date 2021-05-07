@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.fityet.Adapters.ExerciseAdapter;
+import com.example.fityet.AlarmComponents.AlarmDialog;
 import com.example.fityet.MainActivity;
 import com.example.fityet.Models.Exercise;
 import com.example.fityet.Models.ScheduleActivity;
@@ -169,6 +170,7 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
         }
         dayOfTheWeek.setText(days[counterForDay]);
         queryExercises();
+
     }
 
     @Override
