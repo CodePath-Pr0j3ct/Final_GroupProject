@@ -35,7 +35,7 @@ public class TimerFragment extends Fragment {
 
     CountDownTimer countdownTimer;
     long milliRemaining = 6000;
-    boolean timerRunning;
+    public static boolean timerRunning;
 
     public TimerFragment() {
         // Required empty public constructor
@@ -74,7 +74,7 @@ public class TimerFragment extends Fragment {
 
         AlarmDialog alarmDialog = new AlarmDialog();
 
-      //  alarmDialog.show(getActivity().getSupportFragmentManager(), "Alarm dialog");
+       alarmDialog.show(getActivity().getSupportFragmentManager(), "Alarm dialog");
 
     }
 
@@ -93,7 +93,7 @@ public class TimerFragment extends Fragment {
 
                 milliRemaining = l;
 
-         //       updateTimer();
+                updateTimer();
 
             }
 

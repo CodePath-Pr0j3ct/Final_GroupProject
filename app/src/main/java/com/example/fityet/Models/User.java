@@ -12,10 +12,11 @@ public class User extends ParseObject{
     public  final String KEY_AVATAR = "Avatar";
     public static final String KEY_GOAL = "goal";
     public static final String KEY_USER = "user";
-    public static final String KEY_PROGRESS = "";
+    public static final String KEY_PROGRESS = "progress";
     public static final String KEY_WEIGHT = "";
     public static final String KEY_HEIGHT = "";
     public static final String KEY_PROFILE_PIC = "profilepic";
+
 
     public ParseFile getAvatar(){
 

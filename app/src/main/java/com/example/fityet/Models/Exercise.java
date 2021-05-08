@@ -11,6 +11,7 @@ public class Exercise extends ParseObject {
     public final static String keyHour = "hour";
     public final static String keyMin = "minute";
     public final static String keyDaysOfWeek = "daysOfWeek1";
+    public final static String keyProgress = "progress";
 
     public Exercise(){
 
@@ -51,5 +52,6 @@ public class Exercise extends ParseObject {
     public void setUser(ParseUser addy){
         put(keyUser, addy);
     }
+
 
 }

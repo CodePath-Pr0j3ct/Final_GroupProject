@@ -183,8 +183,9 @@
         android:layout_height="56dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-5dp"
-        android:layout_marginBottom="106dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginBottom="104dp">
 
         <Button
             android:id="@+id/btnSave"
@@ -192,10 +193,20 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="149dp"
+            android:layout_marginStart="232dp"
             android:layout_marginBottom="5dp"
             android:gravity="center_vertical"
             android:text="Save" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="48dp"
+            android:layout_marginBottom="5dp"
+            android:text="Back" />
 
     </RelativeLayout>
 

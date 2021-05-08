@@ -7,12 +7,14 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.parse.ParseUser;
 
 import java.util.Locale;
 
@@ -23,8 +25,11 @@ public class DisplayExercise extends YouTubeBaseActivity {
     private TextView mTextViewCountDown;
     private Button mButtonStartPause;
     private CountDownTimer mCountDownTimer;
-    private boolean mTimerRunning;
+    public static boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+
+
+
 
 
     @Override
@@ -85,6 +90,7 @@ public class DisplayExercise extends YouTubeBaseActivity {
         mButtonStartPause.setText("pause");
     }
 
+
     private void pauseTimer(){
         mCountDownTimer.cancel();
         mTimerRunning = false;
@@ -99,4 +105,5 @@ public class DisplayExercise extends YouTubeBaseActivity {
         mTextViewCountDown.setText(timeLeftFormatted);
 
     }
+
 }

@@ -14,7 +14,10 @@ import com.bumptech.glide.Glide;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.example.fityet.DisplayExercise;
 import com.parse.ParseFile;
 import com.example.fityet.LoginActivity;
 import com.parse.ParseQuery;
@@ -39,7 +42,11 @@ public class ProfileFragment extends Fragment {
     private TextView userWeight;
     private TextView userHeight;
     private TextView userEmail;
+    private ProgressBar userProgress;
     public static final String TAG = "Profile Fragment";
+    private ParseUser currentUser;
+    private DisplayExercise timerData;
+    int boost = 0;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -60,6 +67,7 @@ public class ProfileFragment extends Fragment {
 
         queryUser();
 
+        userProgress = view.findViewById(R.id.userProgress);
         btnLogOut = view.findViewById(R.id.btnLogOut);
         tvUsername = view.findViewById(R.id.userName);
         userGoal = view.findViewById(R.id.customGoal);
@@ -74,6 +82,14 @@ public class ProfileFragment extends Fragment {
         userWeight.setText(currentUser.getString("weight"));
         userGoal.setText(currentUser.getString("goal"));
         userEmail.setText(currentUser.getEmail());
+       // userProgress.setProgress(currentUser.getInt("progress"));
+        if(TimerFragment.timerRunning) {
+            boost = boost + 5;
+        }
+       // setProgress(boost);
+        userProgress.setProgress(boost);
+
+      //  setProgress();
 
         ParseFile image = currentUser.getParseFile("profilepic");
 
@@ -96,6 +112,21 @@ public class ProfileFragment extends Fragment {
             });
 
         }
+
+ /*   public void setProgress() {
+
+
+      /*  if(!DisplayExercise.mTimerRunning){
+            boost = boost + 5;
+        }
+        userProgress.setProgress(boost);
+        if(!TimerFragment.timerRunning) {
+            boost = boost + 5;
+        }
+
+    } */
+
+
 
         protected void queryUser () {
             ParseQuery<ParseUser> query = ParseUser.getQuery();

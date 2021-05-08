@@ -48,6 +48,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         this.notifyDataSetChanged();
     }
 
+
     public void addAll(List<Exercise> list){
         for(Exercise exerciseAd : list){
             exercises.add(exerciseAd);
