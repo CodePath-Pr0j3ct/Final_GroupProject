@@ -1,44 +1,31 @@
 package com.example.fityet.Models;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import com.example.fityet.AlarmComponents.Alarm;
-import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
-import java.util.Random;
-import android.content.Intent;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.app.PendingIntent;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import android.widget.Toast;
-import com.example.fityet.AlarmComponents.AlarmReceiver;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+
+import com.example.fityet.AlarmComponents.Alarm;
 import com.example.fityet.R;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.example.fityet.fragments.ScheduleFragment;
+
 import java.util.ArrayList;
-import android.app.AlarmManager;
 import java.util.Calendar;
 import java.util.List;
-import android.content.Context;
-
-import static java.security.AccessController.getContext;
+import java.util.Random;
 
 public class ScheduleActivity extends AppCompatActivity {
 
@@ -161,28 +148,6 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         });
 
-/*
-        // Creating adapter for spinner and also reference the current list from first activity to get right info
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, RegisterActivity.registerActivity.selectedArray);
-
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
-        exerciseSpinner.setAdapter(dataAdapter);*/
-
-     /*   ArrayAdapter<CharSequence> dataAdapter;
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        if (currentUser.getString("goal").equals("Lose fat/Build Muscle")) {
-            dataAdapter = ArrayAdapter.createFromResource(this, R.array.lose_fat_build_muscle, android.R.layout.simple_spinner_item);
-        } else {
-            dataAdapter = ArrayAdapter.createFromResource(this, R.array.gain_flexibility_maintain_balance, android.R.layout.simple_spinner_item);
-        }
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //  exerciseSpinner.setAdapter(dataAdapter);
-*/
-
-        //GOTTA FIX THIS BUTTON ARGHHHHH
         btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
