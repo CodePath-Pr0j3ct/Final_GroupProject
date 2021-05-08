@@ -11,16 +11,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.fityet.Adapters.ExerciseAdapter;
@@ -31,14 +30,12 @@ import com.example.fityet.Models.ScheduleActivity;
 import com.example.fityet.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -58,7 +55,6 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
     private Button btnNext;
     private RecyclerView rvExercises;
     protected ExerciseAdapter exerciseAdapter;
-
     //AlarmCursorAdapter cursorAdapter;
     // AlarmReminderDbHelper alarmReminderDbHelper = new AlarmReminderDbHelper(this);
     List<Exercise> exercisesForDay;

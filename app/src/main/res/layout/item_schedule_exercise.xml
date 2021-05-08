@@ -6,6 +6,7 @@
     android:background="#E8E1E1">
 
     <LinearLayout
+        android:id="@+id/ly"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="vertical"

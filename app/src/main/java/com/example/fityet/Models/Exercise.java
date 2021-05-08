@@ -5,7 +5,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 @ParseClassName("Exercise")
-public class Exercise extends ParseObject {
+public class Exercise extends ParseObject implements Comparable {
     public final static String keyUser = "User";
     public final static String keyAlarmId = "Id";
     public final static String keyExercise = "exercise";
@@ -72,6 +72,27 @@ public class Exercise extends ParseObject {
         put(keyUser, addy);
     }
 
+    @Override
+    public int compareTo(Object exer) {
+        Exercise ex = new Exercise();
+        ex = (Exercise) exer;
+        if (this.getHour() > ex.getHour()){
+            return 1;
+        }
+        else if(this.getHour() < ex.getHour()){
+            return -1;
+        }
+        else {
+            if (this.getMinutes() > ex.getMinutes()){
+                return 1;
+            }
+            else if(this.getMinutes() < ex.getMinutes()) {
+                return -1;
+            }
+            else { return 0; }
+        }
+    } 
+  
     public Boolean getMondayCheck(){
 
         return getBoolean(keyMonday.toString());
