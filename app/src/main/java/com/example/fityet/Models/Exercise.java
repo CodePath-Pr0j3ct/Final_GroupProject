@@ -5,16 +5,36 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 @ParseClassName("Exercise")
-public class Exercise extends ParseObject {
+public class Exercise extends ParseObject implements Comparable {
     public final static String keyUser = "User";
+    public final static String keyAlarmId = "Id";
     public final static String keyExercise = "exercise";
     public final static String keyHour = "hour";
     public final static String keyMin = "minute";
     public final static String keyDaysOfWeek = "daysOfWeek1";
     public final static String keyProgress = "progress";
+    public final Boolean keyMonday = false;
+    public final Boolean keyTuesday = false;
+    public final Boolean keyWednesday = false;
+    public final Boolean keyThursday = false;
+    public final Boolean keyFriday = false;
+    public final Boolean keySaturday = false;
+    public final Boolean keySunday = false;
 
     public Exercise(){
 
+
+    }
+
+    public String getAlarmId(){
+
+        return getString(keyAlarmId);
+
+    }
+
+    public void setAlarmId(String id){
+
+        put(keyAlarmId, id);
 
     }
 
@@ -53,5 +73,107 @@ public class Exercise extends ParseObject {
         put(keyUser, addy);
     }
 
+    @Override
+    public int compareTo(Object exer) {
+        Exercise ex = new Exercise();
+        ex = (Exercise) exer;
+        if (this.getHour() > ex.getHour()){
+            return 1;
+        }
+        else if(this.getHour() < ex.getHour()){
+            return -1;
+        }
+        else {
+            if (this.getMinutes() > ex.getMinutes()){
+                return 1;
+            }
+            else if(this.getMinutes() < ex.getMinutes()) {
+                return -1;
+            }
+            else { return 0; }
+        }
+    }
+
+    public Boolean getMondayCheck(){
+
+        return getBoolean(keyMonday.toString());
+
+    }
+
+    public void setMondayCheck(Boolean mondayCheck){
+
+        put(keyMonday.toString(), mondayCheck);
+
+    }
+
+    public Boolean getTuesdayCheck(){
+
+        return getBoolean(keyTuesday.toString());
+
+    }
+
+    public void setTuesdayCheck(Boolean tuesdayCheck){
+
+        put(keyTuesday.toString(), tuesdayCheck);
+
+    }
+
+    public Boolean getWednesdayCheck(){
+
+        return getBoolean(keyWednesday.toString());
+
+    }
+
+    public void setWednesdayCheck(Boolean wednesdayCheck){
+
+        put(keyWednesday.toString(), wednesdayCheck);
+
+    }
+    public Boolean getThursdayCheck(){
+
+        return getBoolean(keyThursday.toString());
+
+    }
+
+    public void setThursdayCheck(Boolean thursdayCheck){
+
+        put(keyThursday.toString(), thursdayCheck);
+
+    }
+    public Boolean getFridayCheck(){
+
+        return getBoolean(keyFriday.toString());
+
+    }
+
+    public void setFridayCheck(Boolean fridayCheck){
+
+        put(keyFriday.toString(), fridayCheck);
+
+    }
+    public Boolean getSaturdayCheck(){
+
+        return getBoolean(keySaturday.toString());
+
+    }
+
+    public void setSaturdayCheck(Boolean saturdayCheck){
+
+        put(keySaturday.toString(), saturdayCheck);
+
+    }
+    public Boolean getSundayCheck(){
+
+        return getBoolean(keySunday.toString());
+
+    }
+
+    public void setSundayCheck(Boolean sundayCheck){
+
+        put(keySunday.toString(), sundayCheck);
+
+    }
+
 
 }
+

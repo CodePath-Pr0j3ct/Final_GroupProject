@@ -13,7 +13,7 @@
     <string name="your_email">Email address</string>
 
     <string-array name="spinner_goals">
-        <item>Lose fat/Build Muscle</item>
+        <item>Lose fat/Build muscle</item>
         <item>Gain flexibility/Maintain balance</item>
     </string-array>
 

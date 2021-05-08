@@ -9,15 +9,23 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import com.example.fityet.AlarmComponents.Alarm;
+import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import java.util.Random;
+import android.content.Intent;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.app.PendingIntent;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import android.widget.Toast;
+import com.example.fityet.AlarmComponents.AlarmReceiver;
 
 import com.example.fityet.R;
 import com.parse.ParseException;
@@ -25,9 +33,10 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.example.fityet.fragments.ScheduleFragment;
 import java.util.ArrayList;
+import android.app.AlarmManager;
 import java.util.Calendar;
 import java.util.List;
-import android.content.Intent;
+import android.content.Context;
 
 import static java.security.AccessController.getContext;
 
@@ -88,7 +97,7 @@ public class ScheduleActivity extends AppCompatActivity {
         gainFlex.add("Side Kick");
 
         currentUser = ParseUser.getCurrentUser();
-        if (currentUser.getString("goal").equals("Build muscle")){
+        if (currentUser.getString("goal").equals("Lose fat/Build muscle")){
             adapter = new ArrayAdapter<String>(
                     this, android.R.layout.simple_spinner_item, buildMuscle);
             adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
@@ -115,10 +124,32 @@ public class ScheduleActivity extends AppCompatActivity {
                             public void onTimeSet(TimePicker view, int hourOfDay,
                                                   int minute) {
                                 if (minute <= 9){
-                                    tvSetTime.setText(hourOfDay + ":0" + minute);
+                                    if (hourOfDay < 12) {
+                                        hourOfDay = (hourOfDay == 0)? 12 : hourOfDay;
+                                        tvSetTime.setText(hourOfDay + ":0" + minute + " AM");
+                                    }
+                                    else{
+                                        if (hourOfDay > 12) {
+                                            tvSetTime.setText(hourOfDay % 12 + ":0" + minute + " PM");
+                                        }
+                                        else{
+                                            tvSetTime.setText(hourOfDay + ":0" + minute + " PM");
+                                        }
+                                    }
                                 }
                                 else {
-                                    tvSetTime.setText(hourOfDay + ":" + minute);
+                                    if (hourOfDay < 12) {
+                                        hourOfDay = (hourOfDay == 0)? 12 : hourOfDay;
+                                        tvSetTime.setText(hourOfDay + ":" + minute + " AM");
+                                    }
+                                    else{
+                                        if (hourOfDay > 12) {
+                                            tvSetTime.setText(hourOfDay % 12 + ":" + minute + " PM");
+                                        }
+                                        else{
+                                            tvSetTime.setText(hourOfDay + ":" + minute + " PM");
+                                        }
+                                    }
                                 }
                                 hour = hourOfDay;
                                 min = minute;
@@ -130,18 +161,41 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         });
 
+/*
+        // Creating adapter for spinner and also reference the current list from first activity to get right info
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, RegisterActivity.registerActivity.selectedArray);
 
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        exerciseSpinner.setAdapter(dataAdapter);*/
+
+     /*   ArrayAdapter<CharSequence> dataAdapter;
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser.getString("goal").equals("Lose fat/Build Muscle")) {
+            dataAdapter = ArrayAdapter.createFromResource(this, R.array.lose_fat_build_muscle, android.R.layout.simple_spinner_item);
+        } else {
+            dataAdapter = ArrayAdapter.createFromResource(this, R.array.gain_flexibility_maintain_balance, android.R.layout.simple_spinner_item);
+        }
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //  exerciseSpinner.setAdapter(dataAdapter);
+*/
+
+        //GOTTA FIX THIS BUTTON ARGHHHHH
         btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Exercise exerciseObj = new Exercise();
                 String daysOfExercise = getDays();
                 String exercise = exerciseSpinner.getSelectedItem().toString();
-                Exercise exerciseObj = new Exercise();
                 exerciseObj.setExercise(exercise);
                 exerciseObj.setHour(hour);
                 exerciseObj.setMinutes(min);
                 exerciseObj.setDaysOfWeek(daysOfExercise);
+
+                setWeekChecks(exerciseObj);
                 exerciseObj.setUser(currentUser);
                 exerciseObj.saveInBackground(new SaveCallback() {
                     @Override
@@ -152,6 +206,9 @@ public class ScheduleActivity extends AppCompatActivity {
                         }
 
                         Log.i("Schedule Activity",  "Exercise Saved");
+
+                        scheduleAlarm(exerciseObj);
+
                     }
                 });
 
@@ -195,14 +252,56 @@ public class ScheduleActivity extends AppCompatActivity {
 
     }
 
+    private void scheduleAlarm(Exercise exerciseObj){
+
+        int alarmId = new Random().nextInt(Integer.MAX_VALUE);
+
+        Alarm alarm = new Alarm(alarmId,
+                exerciseObj.getHour(),
+                exerciseObj.getMinutes(),
+                true,
+                exerciseObj.getMondayCheck(),
+                exerciseObj.getTuesdayCheck(),
+                exerciseObj.getWednesdayCheck(),
+                exerciseObj.getThursdayCheck(),
+                exerciseObj.getFridayCheck(),
+                exerciseObj.getSaturdayCheck(),
+                exerciseObj.getSundayCheck()
+        );
+
+        alarm.schedule(getApplicationContext());
+
+        Log.i("scheduleAlarm checkbox1", exerciseObj.getMondayCheck().toString());
+
+    }
+
     private String getDays() {
         StringBuilder daysOfWeek = new StringBuilder("0000000");
+
         for (int i = 0; i < daysOfWeek.length(); i++){
+
             if(checks[i].isChecked()){
+
                 daysOfWeek.setCharAt(i, '1');
+
             }
+
         }
+
         return daysOfWeek.toString();
+
+    }
+
+    public void setWeekChecks(Exercise exerciseObj) {
+
+        exerciseObj.setMondayCheck(cb1.isChecked());
+        exerciseObj.setTuesdayCheck(cb2.isChecked());
+        exerciseObj.setWednesdayCheck(cb3.isChecked());
+        exerciseObj.setThursdayCheck(cb4.isChecked());
+        exerciseObj.setFridayCheck(cb5.isChecked());
+        exerciseObj.setSaturdayCheck(cb6.isChecked());
+        exerciseObj.setSundayCheck(cb7.isChecked());
+
     }
 
 }
