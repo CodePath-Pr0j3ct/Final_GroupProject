@@ -126,10 +126,32 @@ public class ScheduleActivity extends AppCompatActivity {
                             public void onTimeSet(TimePicker view, int hourOfDay,
                                                   int minute) {
                                 if (minute <= 9){
-                                    tvSetTime.setText(hourOfDay + ":0" + minute);
+                                    if (hourOfDay < 12) {
+                                        hourOfDay = (hourOfDay == 0)? 12 : hourOfDay;
+                                        tvSetTime.setText(hourOfDay + ":0" + minute + " AM");
+                                    }
+                                    else{
+                                        if (hourOfDay > 12) {
+                                            tvSetTime.setText(hourOfDay % 12 + ":0" + minute + " PM");
+                                        }
+                                        else{
+                                            tvSetTime.setText(hourOfDay + ":0" + minute + " PM");
+                                        }
+                                    }
                                 }
                                 else {
-                                    tvSetTime.setText(hourOfDay + ":" + minute);
+                                    if (hourOfDay < 12) {
+                                        hourOfDay = (hourOfDay == 0)? 12 : hourOfDay;
+                                        tvSetTime.setText(hourOfDay + ":" + minute + " AM");
+                                    }
+                                    else{
+                                        if (hourOfDay > 12) {
+                                            tvSetTime.setText(hourOfDay % 12 + ":" + minute + " PM");
+                                        }
+                                        else{
+                                            tvSetTime.setText(hourOfDay + ":" + minute + " PM");
+                                        }
+                                    }
                                 }
                                 hour = hourOfDay;
                                 min = minute;
