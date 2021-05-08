@@ -9,11 +9,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.LayoutInflater;
 
+import com.example.fityet.DisplayExercise;
+import android.widget.TextView;
+import android.widget.ImageView;
+
+import com.example.fityet.Models.HorizontalModel;
 import com.example.fityet.R;
 
 import org.parceler.Parcels;
 
 public class AlarmDialog extends AppCompatDialogFragment {
+
+    private ImageView alarmThumbnail;
+
+    private TextView alarmExerciseName;
 
     public Dialog onCreateDialog(Bundle savedInstanceState){
 
@@ -27,6 +36,10 @@ public class AlarmDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+                //stop alarm sound and vibration
+                Intent intentService = new Intent(getContext(), AlarmService.class);
+                getContext().stopService(intentService);
+
                 dialog.dismiss();
 
             }
@@ -35,12 +48,15 @@ public class AlarmDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                //When user 'commits' to exercise, they will be taken to ahmed's countdown activity
+                //stop alarm sound and vibration
+                Intent intentService = new Intent(getContext(), AlarmService.class);
+                getContext().stopService(intentService);
 
-                //Intent i = new Intent(getContext(), DetailActivity.class);
-                //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //When user 'commits' to exercise, they will be taken to video countdown activity
+                Intent i = new Intent(getContext(), DisplayExercise.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 //i.putExtra("exercise", Parcels.wrap(exercise));
-                //getContext().startActivity(i);
+                getContext().startActivity(i);
 
                 dialog.dismiss();
 

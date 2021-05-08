@@ -119,7 +119,10 @@ public class VideoFragment extends Fragment {
         //More must display extra exercises
         //If-else statements helps title and order horizontal models according to logged-in User's goal
         ParseUser currentUser = ParseUser.getCurrentUser();
-        if(currentUser.getString("goal") == "Lose fat/Build Muscle"){
+
+        String stringGoal = currentUser.getString("goal");
+
+        if(stringGoal.equals("Lose fat/Build muscle")){
 
             mVerticalModel1.setTitle("For You");
 

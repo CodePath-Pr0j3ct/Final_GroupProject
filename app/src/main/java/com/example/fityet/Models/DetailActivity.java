@@ -32,7 +32,6 @@ public class DetailActivity extends YouTubeBaseActivity {
         exName = findViewById(R.id.exname);
         youTubePlayerView = findViewById(R.id.player);
 
-        //Exercise exercise = Parcels.unwrap(getIntent().getParcelableExtra("exercise"));
         HorizontalModel exercise = Parcels.unwrap(getIntent().getParcelableExtra("exercise"));
         exName.setText(exercise.getName());
         String youtubeKey = exercise.getId();

@@ -12,10 +12,12 @@ import androidx.annotation.Nullable;
 import android.os.IBinder;
 import androidx.core.app.NotificationCompat;
 import com.example.fityet.MainActivity;
+import com.example.fityet.fragments.ScheduleFragment;
 
 public class AlarmService extends Service {
     private MediaPlayer mediaPlayer;
     private Vibrator vibrator;
+    public static final String CHANNEL_ID = "ALARM_SERVICE_CHANNEL";
 
     @Override
     public void onCreate() {
@@ -28,24 +30,21 @@ public class AlarmService extends Service {
 
     }
 
-//    @Override
-//    public int onStartCommand(Intent intent, int flags, int startId) {
-//        Intent notificationIntent = new Intent(this, MainActivity.class);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-//
-//        String alarmTitle = String.format("%s Alarm", intent.getStringExtra(TITLE));
-//
-//        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID).setContentTitle(alarmTitle).setContentText("FitYet Alarm").setContentIntent(pendingIntent).build();
-//
-//        mediaPlayer.start();
-//
-//        long[] pattern = { 0, 100, 1000 };
-//        vibrator.vibrate(pattern, 0);
-//
-//        startForeground(1, notification);
-//
-//        return START_STICKY;
-//    }
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID).setContentTitle("FitYet Alarm").setContentText("Exercise alarm time").setSmallIcon(R.drawable.ic_baseline_fitness_center_24).setContentIntent(pendingIntent).build();
+
+        mediaPlayer.start();
+
+        long[] pattern = { 0, 500, 1000 };
+        vibrator.vibrate(pattern, 0);
+
+        startForeground(1, notification);
+
+        return START_STICKY;
+    }
 
     @Override
     public void onDestroy() {

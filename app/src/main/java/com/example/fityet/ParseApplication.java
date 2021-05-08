@@ -7,9 +7,17 @@ import com.parse.Parse;
 import com.parse.ParseObject;
 import com.example.fityet.Models.User;
 import com.example.fityet.Models.Exercise;
+import android.app.Application;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 
 
 public class ParseApplication extends Application {
+
+    public static final String CHANNEL_ID = "ALARM_SERVICE_CHANNEL_ID";
+    public static final String CHANNEL_NAME = "ALARM_SERVICE_CHANNEL";
 
     @Override
     public void onCreate() {
@@ -27,4 +35,6 @@ public class ParseApplication extends Application {
         );
 
     }
-}
+
+
+    }

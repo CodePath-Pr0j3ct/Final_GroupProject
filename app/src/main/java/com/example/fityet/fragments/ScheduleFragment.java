@@ -23,6 +23,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.fityet.Adapters.ExerciseAdapter;
+import com.example.fityet.AlarmComponents.AlarmDialog;
+import com.example.fityet.MainActivity;
 import com.example.fityet.Models.Exercise;
 import com.example.fityet.Models.ScheduleActivity;
 import com.example.fityet.R;
@@ -103,8 +105,6 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
         queryExercises();
 
-
-
         // Get a reference for the week view in the layout.
         /*mWeekView = view.findViewById(R.id.weekView);
 
@@ -166,10 +166,8 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
         }
         dayOfTheWeek.setText(days[counterForDay]);
         queryExercises();
+
     }
-
-
-
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
