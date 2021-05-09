@@ -1,9 +1,14 @@
 package com.example.fityet.fragments;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Button;
 import androidx.annotation.NonNull;
@@ -18,12 +23,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.fityet.DisplayExercise;
+import com.parse.GetCallback;
 import com.parse.ParseFile;
 import com.example.fityet.LoginActivity;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.FindCallback;
 import android.content.Intent;
 import java.util.List;
+import java.util.Objects;
+
 import com.parse.ParseException;
 import android.widget.ImageView;
 import com.parse.ParseUser;
@@ -44,9 +53,20 @@ public class ProfileFragment extends Fragment {
     private TextView userEmail;
     private ProgressBar userProgress;
     public static final String TAG = "Profile Fragment";
+    private TextView tvProgress;
     private ParseUser currentUser;
     private DisplayExercise timerData;
     int boost = 0;
+
+    private final Handler handler = new Handler();
+
+    //new
+    int progress;
+
+
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
+
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -60,6 +80,7 @@ public class ProfileFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
@@ -75,32 +96,64 @@ public class ProfileFragment extends Fragment {
         userHeight = view.findViewById(R.id.customHeight);
         userEmail = view.findViewById(R.id.customEmail);
         userPic = view.findViewById(R.id.userImage);
+        tvProgress = view.findViewById(R.id.pbProgress);
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
+        currentUser = ParseUser.getCurrentUser();
         tvUsername.setText(currentUser.getUsername());
         userHeight.setText(currentUser.getString("height"));
         userWeight.setText(currentUser.getString("weight"));
         userGoal.setText(currentUser.getString("goal"));
         userEmail.setText(currentUser.getEmail());
-       // userProgress.setProgress(currentUser.getInt("progress"));
-        if(TimerFragment.timerRunning) {
-            boost = boost + 5;
+
+
+        // currentUser.put("Progress", 0);
+
+        //Retrieving the counter value from backend first
+        progress = currentUser.getInt("progress");
+
+        //Assigning it to the current user in backend
+        currentUser.put("progress", progress);
+
+        //Taking the progress value from backend and assigning it in the progress bar
+        userProgress.setProgress(currentUser.getInt("progress"));
+        tvProgress.setText(progress + "/" + userProgress.getMax());
+
+
+        //Checking to see if the progress is greater than the maxValue (=100 )
+        if (progress >= 100) {
+            //Resetting progress
+            progress = 0;
+            //Setting the progress bar to 0
+            userProgress.setProgress(progress);
+            //Saving new progress (=0) in backend
+            currentUser.put("progress", progress);
+            currentUser.saveInBackground();
+            Log.i(TAG, "The progress should have reseetted!");
+            tvProgress.setText(progress + "/" + userProgress.getMax());
         }
-       // setProgress(boost);
-        userProgress.setProgress(boost);
 
-      //  setProgress();
-
-        ParseFile image = currentUser.getParseFile("profilepic");
-
-        //Taking profile picture from back4app
-        if (image != null) {
-            String imageURL = image.getUrl();
-            Glide.with(getContext())
-                    .load(imageURL)
-                    .transform(new CircleCrop())
-                    .into(userPic);
+        // Checking if the timer has stopped,
+        // taking timerCancel (boolean value) from DisplayExercise.java
+        if (DisplayExercise.timerCancel) {
+            progress = progress + 5;
+            userProgress.setProgress(currentUser.getInt("progress"));
+            userProgress.setProgress(progress);
+            currentUser.put("progress", progress);
+            currentUser.saveInBackground();
+            tvProgress.setText(progress + "/" + userProgress.getMax());
         }
+
+
+            ParseFile image = currentUser.getParseFile("profilepic");
+
+            //Taking profile picture from back4app
+            if (image != null) {
+                String imageURL = image.getUrl();
+                Glide.with(getContext())
+                        .load(imageURL)
+                        .transform(new CircleCrop())
+                        .into(userPic);
+            }
 
             btnLogOut.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -112,19 +165,6 @@ public class ProfileFragment extends Fragment {
             });
 
         }
-
- /*   public void setProgress() {
-
-
-      /*  if(!DisplayExercise.mTimerRunning){
-            boost = boost + 5;
-        }
-        userProgress.setProgress(boost);
-        if(!TimerFragment.timerRunning) {
-            boost = boost + 5;
-        }
-
-    } */
 
 
 
@@ -139,6 +179,8 @@ public class ProfileFragment extends Fragment {
 
                     if (e == null) {
                         // The query was successful.
+
+
                         Log.i(TAG, "User info success");
 
 

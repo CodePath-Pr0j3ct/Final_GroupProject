@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import android.os.IBinder;
 import androidx.core.app.NotificationCompat;
 import com.example.fityet.MainActivity;
-import com.example.fityet.fragments.ScheduleFragment;
 
 public class AlarmService extends Service {
     private MediaPlayer mediaPlayer;

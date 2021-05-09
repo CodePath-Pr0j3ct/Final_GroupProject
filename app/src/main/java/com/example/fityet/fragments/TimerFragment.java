@@ -75,7 +75,7 @@ public class TimerFragment extends Fragment {
         AlarmDialog alarmDialog = new AlarmDialog();
 
         alarmDialog.show(getActivity().getSupportFragmentManager(), "Alarm dialog");
-    //   alarmDialog.show(getActivity().getSupportFragmentManager(), "Alarm dialog");
+
 
     }
 

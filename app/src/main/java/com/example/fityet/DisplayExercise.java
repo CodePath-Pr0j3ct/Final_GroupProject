@@ -21,7 +21,7 @@ import java.util.Locale;
 
 public class DisplayExercise extends YouTubeBaseActivity {
     protected static final String YOUTUBE_API_KEY = "AIzaSyBWQ_RUXfBeW6V5O3b61DRCCLJbb1ZLKpY";
-    private static final long START_TIME_IN_MILLIS = 10000; //300000;
+    private static final long START_TIME_IN_MILLIS = 300000;
     YouTubePlayerView youTubePlayerView;
     public TextView mTextViewCountDown;
     private Button mButtonStartPause;
@@ -30,9 +30,6 @@ public class DisplayExercise extends YouTubeBaseActivity {
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
     public static boolean timerCancel;
     Button btnBack;
-
-
-
 
 
     @Override
@@ -45,6 +42,7 @@ public class DisplayExercise extends YouTubeBaseActivity {
         btnBack = findViewById(R.id.btnBack);
         //String youtubeKey = exercise.getId();
         String youtubeKey = "ASdvN_XEl_c";
+        timerCancel = false;
         initializeYoutube(youtubeKey);
         updateCountDownText();
 
@@ -69,14 +67,7 @@ public class DisplayExercise extends YouTubeBaseActivity {
     }
 
     public void onBackPressed(){
-      /*  FragmentManager fm = getSupportFragmentManager();
-        if (fm.getBackStackEntryCount() > 0) {
-            Log.i("TimerActivity", "Success! popping back stack");
-            fm.popBackStack();
-        } else {
-            Log.i("TimerActivity", "nothing on backstack, calling super"); */
             super.onBackPressed();
-       // }
     }
 
 
@@ -96,7 +87,7 @@ public class DisplayExercise extends YouTubeBaseActivity {
     }
 
 
-    private void startTimer(){
+    public void startTimer(){
         mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisLeftUntilFinish) {
@@ -108,6 +99,8 @@ public class DisplayExercise extends YouTubeBaseActivity {
             public void onFinish() {
                 mTimerRunning = false;
                 mButtonStartPause.setText("Start");
+
+                timerCancel=true;
             }
         }.start();
         mTimerRunning = true;
@@ -122,12 +115,15 @@ public class DisplayExercise extends YouTubeBaseActivity {
         mButtonStartPause.setText("Start");
     }
 
-    private void updateCountDownText(){
+    public void updateCountDownText(){
         int minutes = (int)  (mTimeLeftInMillis / 1000) / 60;
         int seconds = (int)  (mTimeLeftInMillis / 1000) % 60;
 
         String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);
         mTextViewCountDown.setText(timeLeftFormatted);
+      /*  if(minutes == 0 && seconds == 0){
+            timerCancel = true;
+        } */
 
     }
 
