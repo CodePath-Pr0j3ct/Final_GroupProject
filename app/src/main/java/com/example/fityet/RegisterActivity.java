@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.text.TextUtils;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +25,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 
     private EditText etUsername, etPassword, etEmailAddress, etWeight, etHeight;
+    public ProgressBar progressBar;
     private Spinner spinnerGoal;
     //the lists that we use in our spinner
     private final List<String> buildMuscle = new ArrayList<>();
@@ -47,41 +50,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         spinnerGoal = findViewById(R.id.goalsSpinner);
         Button registerBtn = findViewById(R.id.btnRegister);
 
-        /*getListInfo(getResources().getStringArray(R.array.lose_fat_build_muscle), buildMuscle);
-        getListInfo(getResources().getStringArray(R.array.gain_flexibility_maintain_balance), gainFlex);
-
-        // Spinner Drop down elements
-        List<String> categories = new ArrayList<String>();
-
-        //Items in your first spinner;
-        categories.add("Lose fat/Build Muscle");
-        categories.add("Gain Flex/Maintain balance");
-
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // attaching data adapter to spinner
-        spinnerGoal.setAdapter(dataAdapter);
-
-
-        spinnerGoal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ParseUser currentUser = ParseUser.getCurrentUser();
-                if(currentUser.getString("goal").equals("Lose fat/Build Muscle")) {
-                    selectedArray = buildMuscle;
-                }
-                else
-                    selectedArray = gainFlex;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });*/
+        //from profile frag
+       // progressBar = findViewById(R.id.userProgress);
 
         // adding on click listener for our button.
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                 String userGoal = spinnerGoal.getSelectedItem().toString();
                 String weight = etWeight.getText().toString();
                 String height = etHeight.getText().toString();
+              //  int progress = progressBar.getProgress();
 
                 if (TextUtils.isEmpty(userName) && TextUtils.isEmpty(password)) {
                     Toast.makeText(RegisterActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
@@ -134,6 +105,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         }
         //custom property is goal
         user.put("goal", goal);
+       // user.put("progress", progressBar);
 
         // calling a method to register the user.
         user.signUpInBackground(new SignUpCallback() {

@@ -12,6 +12,7 @@ public class Exercise extends ParseObject implements Comparable {
     public final static String keyHour = "hour";
     public final static String keyMin = "minute";
     public final static String keyDaysOfWeek = "daysOfWeek1";
+    public final static String keyProgress = "progress";
     public final Boolean keyMonday = false;
     public final Boolean keyTuesday = false;
     public final Boolean keyWednesday = false;
@@ -91,8 +92,8 @@ public class Exercise extends ParseObject implements Comparable {
             }
             else { return 0; }
         }
-    } 
-  
+    }
+
     public Boolean getMondayCheck(){
 
         return getBoolean(keyMonday.toString());

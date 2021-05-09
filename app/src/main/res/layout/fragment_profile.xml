@@ -16,22 +16,23 @@
       tools:layout_editor_absoluteY="117dp"
       tools:src="@tools:sample/avatars" />
 
-    <ProgressBar
-        android:id="@+id/userProgress"
-        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/userName"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="0dp"
-        android:layout_toEndOf="@+id/userImage"
-        android:max="100"
-        android:progress="10"
-        android:progressTint="#8E24AA" />
+  <ProgressBar
+      android:id="@+id/userProgress"
+      style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+      android:layout_width="229dp"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/userName"
+      android:layout_alignParentEnd="true"
+      android:layout_marginStart="0dp"
+      android:layout_marginTop="6dp"
+      android:layout_marginEnd="25dp"
+      android:layout_toEndOf="@+id/userImage"
+      android:indeterminate="false"
+      android:max="100"
+      android:progress="0"
+      android:progressTint="#8E24AA" />
 
-    <TextView
+  <TextView
         android:id="@+id/userName"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
@@ -162,6 +163,16 @@
         android:layout_marginTop="91dp"
         android:gravity="center"
         android:text="@string/log_out" />
+
+  <TextView
+      android:id="@+id/pbProgress"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      tools:text="9/100"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentEnd="true"
+      android:layout_marginTop="93dp"
+      android:layout_marginEnd="30dp" />
 
 
 </RelativeLayout>

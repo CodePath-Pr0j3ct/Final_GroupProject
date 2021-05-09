@@ -57,6 +57,7 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
     protected ExerciseAdapter exerciseAdapter;
     //AlarmCursorAdapter cursorAdapter;
     // AlarmReminderDbHelper alarmReminderDbHelper = new AlarmReminderDbHelper(this);
+
     List<Exercise> exercisesForDay;
     List<Exercise> allExercises;
     ProgressDialog prgDialog;
@@ -104,28 +105,6 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
         rvExercises.setAdapter(exerciseAdapter);
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
         queryExercises();
-
-        // Get a reference for the week view in the layout.
-        /*mWeekView = view.findViewById(R.id.weekView);
-
-        // Set an action when any event is clicked.
-       // mWeekView.setOnEventClickListener(this);
-
-        // The week view has infinite scrolling horizontally. We have to provide the events of a
-        // month every time the month changes on the week view.
-        mWeekView.setMonthChangeListener(this);
-
-        // Set long press listener for events.
-       // mWeekView.setEventLongPressListener(this);
-
-        // Set up empty view click listener.
-        mWeekView.setEmptyViewClickListener(this);
-
-        // Initially, there will be no events on the week view because the user has not tapped on
-        // it yet.
-        mNewEvents = new ArrayList<WeekViewEvent>();*/
-
-
     }
 
     protected void queryExercises() {
@@ -136,14 +115,16 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
             @Override
             public void done(List<Exercise> objects, ParseException e) {
                 exercisesForDay = new ArrayList<>();
-                for (Exercise object : objects) {
-                   // Log.d("fiiin" , ""+ Character.compare(object.getDaysOfTheWeek().charAt(counterForDay), '1'));
-                    if (Character.compare(object.getDaysOfTheWeek().charAt(counterForDay), '1') == 0){
-                        exercisesForDay.add(object);
-                        //Log.d("fiiin", "" + exercises.size());
+                if (objects != null) {
+                    for (Exercise object : objects) {
+                        // Log.d("fiiin" , ""+ Character.compare(object.getDaysOfTheWeek().charAt(counterForDay), '1'));
+                        if (Character.compare(object.getDaysOfTheWeek().charAt(counterForDay), '1') == 0) {
+                            exercisesForDay.add(object);
+                            //Log.d("fiiin", "" + exercises.size());
+                        }
                     }
+                    allExercises.addAll(objects);
                 }
-                allExercises.addAll(objects);
                 Log.d("ScheduleFragmentTag", exercisesForDay.toString());
                 exerciseAdapter.clear();
                 exerciseAdapter.addAll(exercisesForDay);
@@ -156,7 +137,7 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
     private void goToScheduleAdd() {
         Intent i = new Intent(getContext(), ScheduleActivity.class);
         startActivity(i);
-        getActivity().onBackPressed();
+      //  getActivity().onBackPressed();
     }
 
     private void nextDay() {
