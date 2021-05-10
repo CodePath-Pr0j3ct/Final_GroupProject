@@ -45,7 +45,7 @@ import java.util.List;
  */
 public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    int counterForDay = 0;
+    static int counterForDay = 0;
     String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     private TextView dayOfTheWeek;
     private Calendar calendar;
@@ -54,12 +54,12 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
     private Button btnAdd;
     private Button btnNext;
     private RecyclerView rvExercises;
-    protected ExerciseAdapter exerciseAdapter;
+    protected static ExerciseAdapter exerciseAdapter;
     //AlarmCursorAdapter cursorAdapter;
     // AlarmReminderDbHelper alarmReminderDbHelper = new AlarmReminderDbHelper(this);
 
-    List<Exercise> exercisesForDay;
-    List<Exercise> allExercises;
+    static List<Exercise> exercisesForDay;
+    static List<Exercise> allExercises;
     ProgressDialog prgDialog;
 
     private static final int VEHICLE_LOADER=0;
@@ -107,7 +107,7 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
         queryExercises();
     }
 
-    protected void queryExercises() {
+    public static void queryExercises() {
 
         ParseQuery<Exercise> query = ParseQuery.getQuery(Exercise.class);
         query.whereEqualTo(Exercise.keyUser, ParseUser.getCurrentUser());
@@ -137,7 +137,7 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
     private void goToScheduleAdd() {
         Intent i = new Intent(getContext(), ScheduleActivity.class);
         startActivity(i);
-      //  getActivity().onBackPressed();
+        //getActivity().onBackPressed;
     }
 
     private void nextDay() {

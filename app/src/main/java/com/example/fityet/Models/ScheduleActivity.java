@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.fityet.AlarmComponents.Alarm;
 import com.example.fityet.R;
+import com.example.fityet.fragments.ScheduleFragment;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -199,6 +200,7 @@ public class ScheduleActivity extends AppCompatActivity {
             Log.i("ScheduleActivity", "nothing on backstack, calling super");
             super.onBackPressed();
         }
+        ScheduleFragment.queryExercises();
     }
 
     private void clearActivity(){
