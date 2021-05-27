@@ -238,8 +238,6 @@ public class ScheduleActivity extends AppCompatActivity {
 
         alarm.schedule(getApplicationContext());
 
-        Log.i("scheduleAlarm checkbox1", exerciseObj.getMondayCheck().toString());
-
     }
 
     private String getDays() {

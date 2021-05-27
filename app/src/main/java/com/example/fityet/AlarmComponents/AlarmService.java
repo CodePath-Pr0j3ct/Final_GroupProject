@@ -32,8 +32,14 @@ public class AlarmService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Intent notificationIntent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID).setContentTitle("FitYet Alarm").setContentText("Exercise alarm time").setSmallIcon(R.drawable.ic_baseline_fitness_center_24).setContentIntent(pendingIntent).build();
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID).
+                setContentTitle("FitYet Alarm").
+                setContentText("Exercise alarm").
+                setSmallIcon(R.drawable.ic_baseline_fitness_center_24).
+                setAutoCancel(true).
+                setContentIntent(pendingIntent).
+                build();
 
         mediaPlayer.start();
 
