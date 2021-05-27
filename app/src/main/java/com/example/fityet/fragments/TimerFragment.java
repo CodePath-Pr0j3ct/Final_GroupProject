@@ -114,11 +114,13 @@ public class TimerFragment extends Fragment {
 
         int seconds = (int) (milliRemaining /1000) % 60;
 
-        String timeRemaining = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+        int hours = (int) (milliRemaining / 3600000);
+
+        String timeRemaining = String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
 
         tvCountdown.setText(timeRemaining);
 
-        if(minutes == 0 && seconds == 0){
+        if(hours == 0 && minutes == 0 && seconds == 0){
 
             openDialog();
 
