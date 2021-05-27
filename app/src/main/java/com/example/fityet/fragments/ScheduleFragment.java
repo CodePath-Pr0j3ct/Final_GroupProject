@@ -1,6 +1,7 @@
 package com.example.fityet.fragments;
 
 import android.annotation.SuppressLint;
+import android.app.FragmentTransaction;
 import android.app.LoaderManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -45,6 +46,7 @@ import java.util.List;
  */
 public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    public static final String TAG = "ScheduleFragment";
     int counterForDay = 0;
     String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     private TextView dayOfTheWeek;
@@ -105,6 +107,7 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
         rvExercises.setAdapter(exerciseAdapter);
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
         queryExercises();
+
     }
 
     protected void queryExercises() {
@@ -139,6 +142,9 @@ public class ScheduleFragment extends Fragment implements LoaderManager.LoaderCa
         startActivity(i);
       //  getActivity().onBackPressed();
     }
+
+
+
 
     private void nextDay() {
         counterForDay++;
