@@ -29,7 +29,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (alarmIsToday(intent)) {
 
-            startAlarmService(context);
+            startAlarmService(context, intent);
 
         }
 
@@ -73,7 +73,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         return false;
     }
 
-    private void startAlarmService(Context context) {
+    private void startAlarmService(Context context, Intent intent) {
         Intent intentService = new Intent(context, AlarmService.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             context.startForegroundService(intentService);
@@ -83,6 +83,5 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         Log.i("Alarm Receiver class ", "startAlarmService ON");
     }
-
 
 }

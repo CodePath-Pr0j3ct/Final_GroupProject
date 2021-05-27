@@ -31,7 +31,6 @@ public class DisplayExercise extends YouTubeBaseActivity {
     public static boolean timerCancel;
     Button btnBack;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
