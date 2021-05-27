@@ -7,11 +7,19 @@
     android:background="#ffffff"
     android:gravity="center">
 
-
     <RelativeLayout
+        android:id="@+id/empty"
         android:layout_width="wrap_content"
-        android:layout_height="6dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true">
+        <TextView
+            android:id="@+id/no_alarm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="16dp"
+            android:gravity="center"
+            android:text="Click on the 'ADD' button to schedule exercises"/>
 
     </RelativeLayout>
 
@@ -39,14 +47,16 @@
         android:textSize="30sp"
         tools:text="Monday" />
 
+
     <Button
         android:id="@+id/next"
-        android:layout_width="wrap_content"
+        android:layout_width="152dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="19dp"
         android:layout_marginBottom="250dp"
         android:layout_toEndOf="@+id/dayOfWeek"
         android:gravity="center"

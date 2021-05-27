@@ -97,6 +97,8 @@
     android:orientation="vertical"
     tools:context=".fragments.VideoFragment">
 
+
+
         <TextView
             android:id="@+id/tvGoal"
             android:layout_width="wrap_content"

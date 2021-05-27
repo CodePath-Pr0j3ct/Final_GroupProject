@@ -1,6 +1,7 @@
 package com.example.fityet;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fityet.fragments.ProfileFragment;
@@ -8,6 +9,7 @@ import com.example.fityet.fragments.VideoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.core.app.NotificationManagerCompat;
+
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import androidx.fragment.app.Fragment;
@@ -16,6 +18,9 @@ import android.os.Build;
 import com.example.fityet.fragments.ScheduleFragment;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+
+
 import androidx.fragment.app.FragmentManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         createNotificationChannel();
         setContentView(R.layout.activity_main);
+
+        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setTitle("FitYet");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_baseline_fitness_center_24);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         notificationManager = NotificationManagerCompat.from(this);
 

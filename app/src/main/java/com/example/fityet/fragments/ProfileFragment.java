@@ -52,7 +52,7 @@ public class ProfileFragment extends Fragment {
     private TextView userHeight;
     private TextView userEmail;
     private ProgressBar userProgress;
-    public static final String TAG = "Profile Fragment";
+    public static final String TAG = "ProfileFragment";
     private TextView tvProgress;
     private ParseUser currentUser;
     private DisplayExercise timerData;
