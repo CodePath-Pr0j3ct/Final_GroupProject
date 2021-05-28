@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#212121"
     tools:context=".DisplayExercise">
 
     <com.google.android.youtube.player.YouTubePlayerView
@@ -20,7 +21,7 @@
         android:layout_marginBottom="288dp"
 
         android:text="00:00"
-        android:textColor="@android:color/black"
+        android:textColor="@color/backgroundColor"
         android:textSize="60sp" />
 
     <Button

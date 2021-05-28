@@ -2,27 +2,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="100dp"
-    android:background="#E8E1E1">
+    android:layout_height="70dp"
+    android:background="#212121">
 
     <LinearLayout
         android:id="@+id/ly"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical"
-        android:padding="4dp">
+        android:layout_height="62dp"
+        android:background="#212121"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/time"
-            android:layout_width="397dp"
-            android:layout_height="38dp"
-            android:text="TextView" />
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/exercise"
-            android:layout_width="394dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="20dp"
-            android:text="TextView" />
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginStart="35dp"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
     </LinearLayout>
 </RelativeLayout>

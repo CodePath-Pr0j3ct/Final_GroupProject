@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:background="#212121"
     tools:context=".Models.ScheduleActivity">
 
     <!--<EditText
@@ -42,6 +43,8 @@
         android:layout_marginTop="61dp"
         android:gravity="center"
         android:hint="Select time"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="32sp"
         android:textStyle="bold" />
 
@@ -54,6 +57,7 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="147dp"
         android:text="Exercise"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -79,6 +83,7 @@
         android:layout_marginStart="23dp"
         android:layout_marginBottom="28dp"
         android:text="Preferred days"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -99,6 +104,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="8dp"
             android:text="Mon"
+            android:textColor="#FFFFFF"
             android:textSize="12sp" />
 
         <CheckBox
@@ -109,6 +115,7 @@
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@+id/cbMon"
             android:text="Tue"
+            android:textColor="#FFFFFF"
             android:textSize="12sp" />
 
         <CheckBox
@@ -119,6 +126,7 @@
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@+id/cbTue"
             android:text="Wed"
+            android:textColor="#FFFFFF"
             android:textSize="12sp" />
 
         <CheckBox
@@ -130,6 +138,7 @@
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@+id/cbwed"
             android:text="Thu"
+            android:textColor="#FFFFFF"
             android:textSize="12sp" />
 
 
@@ -153,6 +162,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginStart="2dp"
             android:text="Fri"
+            android:textColor="#FFFFFF"
             android:textSize="12sp" />
 
         <CheckBox
@@ -163,6 +173,7 @@
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@+id/cbFri"
             android:text="Sat"
+            android:textColor="#FFFFFF"
             android:textSize="12sp" />
 
         <CheckBox
@@ -173,6 +184,7 @@
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@+id/cbSat"
             android:text="Sun"
+            android:textColor="#FFFFFF"
             android:textSize="12sp" />
 
 
