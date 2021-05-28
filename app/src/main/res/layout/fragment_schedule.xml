@@ -4,7 +4,7 @@
     android:id="@+id/Next"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#212121"
     android:gravity="center">
 
     <RelativeLayout
@@ -12,14 +12,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
+
         <TextView
             android:id="@+id/no_alarm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:padding="16dp"
             android:gravity="center"
-            android:text="Click on the 'ADD' button to schedule exercises"/>
+            android:padding="16dp"
+            android:text="Click on the 'ADD' button to schedule exercises"
+            android:background="#212121"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
     </RelativeLayout>
 
@@ -43,7 +47,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="9dp"
         android:layout_marginTop="10dp"
-        android:textColor="#8E24AA"
+        android:background="#212121"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
         tools:text="Monday" />
 
@@ -69,7 +74,8 @@
         android:layout_height="472dp"
         android:layout_below="@+id/dayOfWeek"
         android:layout_marginTop="13dp"
-        android:layout_marginBottom="65dp" />
+        android:layout_marginBottom="65dp"
+        android:background="#212121" />
 
 </RelativeLayout>
 

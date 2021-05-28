@@ -88,46 +88,46 @@
 
 <!--</LinearLayout>-->
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#212121"
     android:orientation="vertical"
     tools:context=".fragments.VideoFragment">
 
 
+    <TextView
+        android:id="@+id/tvGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="25dp"
+        android:text="@string/your_goal"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/tvGoal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical"
-            android:text="@string/your_goal"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/tvCustomGoal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvGoal"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="12dp"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            tools:text="Gain muscle/Lose fat" />
+    <TextView
+        android:id="@+id/tvCustomGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvGoal"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="12dp"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        tools:text="Gain muscle/Lose fat" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/tvCustomGoal"
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerview"/>
+        android:layout_below="@id/tvCustomGoal"
+        android:background="#212121" />
 
 </RelativeLayout>

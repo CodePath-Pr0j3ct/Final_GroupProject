@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -56,6 +57,7 @@ public class ProfileFragment extends Fragment {
     private TextView tvProgress;
     private ParseUser currentUser;
     private DisplayExercise timerData;
+  //  private ImageButton imageButton;
     int boost = 0;
 
     private final Handler handler = new Handler();
@@ -97,6 +99,7 @@ public class ProfileFragment extends Fragment {
         userEmail = view.findViewById(R.id.customEmail);
         userPic = view.findViewById(R.id.userImage);
         tvProgress = view.findViewById(R.id.pbProgress);
+       // imageButton = view.findViewById(R.id.imageButton);
 
         currentUser = ParseUser.getCurrentUser();
         tvUsername.setText(currentUser.getUsername());

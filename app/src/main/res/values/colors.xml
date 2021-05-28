@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#AA0000</color>
     <color name="green">#43A047</color>
+
+    <!-- for light mode -->
+    <color name="backgroundColor" >#FCFCFC</color>
+    <color name="textColor">#000000</color>
 </resources>
