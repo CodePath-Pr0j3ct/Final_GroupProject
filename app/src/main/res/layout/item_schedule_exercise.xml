@@ -19,7 +19,7 @@
             android:layout_height="44dp"
             android:text="TextView"
             android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/exercise"
@@ -28,6 +28,6 @@
             android:layout_marginStart="35dp"
             android:text="TextView"
             android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
     </LinearLayout>
 </RelativeLayout>
