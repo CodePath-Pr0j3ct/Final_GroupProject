@@ -26,13 +26,13 @@ Paces the user in reaching a specific fitness goal using regularly scheduled ala
 
 - [x] User creates a profile to access the appropriate exercises
 - [x] User can set fitness goals to achieve
-- [ ] After setting goals, user can set a schedule to workout
-- [ ] Alarm (or Funky music of users choice from their phone) will beep on the scheduled time as a reminder of the exercise.
-- [ ] Alarm- proceed/ dismiss
+- [x] After setting goals, user can set a schedule to workout
+- [x] Alarm (or Funky music of users choice from their phone) will beep on the scheduled time as a reminder of the exercise.
+- [x] Alarm- proceed/ dismiss
 - [x] App provides guidance for inexperienced user (youtube tutorials for exercises)
 - [x] User can browse other exercise tutorials based on their need (One page with different sections/list of exercise)
 - [ ] Setting (Change goal, schedule, type of exercise)
-- [ ] Progress showing how far/close User is from achieving your goals.
+- [x] Progress showing how far/close User is from achieving your goals.
 
 **Optional Nice-to-have Stories**
 
