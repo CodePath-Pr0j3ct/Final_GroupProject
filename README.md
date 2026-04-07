@@ -52,6 +52,7 @@ Paces the user in reaching a specific fitness goal using regularly scheduled ala
 * Youtube guides screen- User can view YouTube tutorials for exercises (FARIHA)
 * Notification screen- User may either dismiss or commit to workout (LILY)
 * Workout screen- User sees visual image and timer while music plays (LILY)
+
 ADDITIONAL
 *Videos related to goals screen- User sees list of exercises and videos according to their goals (FARIHA)
 *More videos (unrelated to goals) screen - User can browse through more tutorials/videos unrelated to their goals (FARIHA)
